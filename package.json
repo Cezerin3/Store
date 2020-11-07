@@ -22,6 +22,11 @@
     "type": "git",
     "url": "https://github.com/Cezerin3/Store"
   },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./src/admin/client/setupTests.ts"
+    ]
+  },
   "scripts": {
     "setup": "node -r esm src/api/server/setup.js",
     "compile": "babel src/store -d dist/store --presets @babel/react --plugins transform-class-properties --quiet",
@@ -45,7 +50,8 @@
     "watch-build": "yarn build:watch",
     "watch-api": "nodemon -r esm src/api/server/index.js",
     "watch-store": "nodemon -r esm dist/store/server/index.js",
-    "watch": "concurrently yarn:watch-*"
+    "watch": "concurrently yarn:watch-*",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/cli": "^7.11.6",
@@ -151,7 +157,8 @@
     "ws": "^6.0.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.1",
     "@types/bcrypt": "^3.0.0",
     "@types/cookie-parser": "^1.4.2",
     "@types/draft-js": "^0.10.44",
@@ -180,6 +187,7 @@
     "@types/ua-parser-js": "^0.7.33",
     "@types/workbox-webpack-plugin": "^5.1.4",
     "@types/ws": "^7.2.6",
+    "babel-plugin-css-modules-transform": "^1.6.2",
     "nodemon": "^2.0.6",
     "typescript": "^4.0.5"
   }
