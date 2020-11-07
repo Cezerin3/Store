@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const applicationConfig = require("./config/admin.js")
 const applicationText = require(`./locales/${applicationConfig.language}.json`)
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 
 module.exports = {
   entry: {
@@ -66,6 +67,7 @@ module.exports = {
             use: {
               loader: "ts-loader",
               options: {
+                transpileOnly: true,
                 ignoreDiagnostics: [
                   2339,
                   2322,
@@ -176,6 +178,18 @@ module.exports = {
         path.resolve("public/admin-assets/css/bundle-*.css"),
       ],
     }),
+    // new ForkTsCheckerWebpackPlugin({
+    //   async: true,
+    //   typescript: {
+    //     enabled: false,
+    //     diagnosticOptions: {
+    //       declaration: false,
+    //       global: true,
+    //       semantic: true,
+    //       syntactic: true,
+    //     },
+    //   },
+    // }),
     new webpack.DefinePlugin({
       APPLICATION_CONFIG: JSON.stringify(applicationConfig),
     }),
