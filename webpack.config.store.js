@@ -109,11 +109,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
-        "theme/assets/js/app-*.js",
-        "theme/assets/js/theme-*.js",
-        "theme/assets/css/bundle-*.css",
-        "theme/assets/sw.js",
-        "theme/assets/precache-manifest.*.js",
+        path.resolve("theme/assets/js/*-*.js"),
+        path.resolve("theme/dist/*"),
+        path.resolve("theme/assets/sw.js"),
+        path.resolve("theme/assets/workbox-*.js"),
       ],
     }),
     new MiniCssExtractPlugin({
@@ -127,7 +126,6 @@ module.exports = {
     }),
     new GenerateSW({
       swDest: "assets/sw.js",
-      // precacheManifestFilename: "assets/precache-manifest.[manifestHash].js",
       clientsClaim: true,
       skipWaiting: true,
       exclude: [/\.html$/],
