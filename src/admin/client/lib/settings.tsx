@@ -1,1 +1,2 @@
-export default APPLICATION_CONFIG
+// @ts-ignore
+export default ApplicationConfig

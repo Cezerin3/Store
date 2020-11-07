@@ -1,1 +1,2 @@
-export default APPLICATION_TEXT
+// @ts-ignore
+export default ApplicationText

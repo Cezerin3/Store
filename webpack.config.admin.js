@@ -191,10 +191,10 @@ module.exports = {
     //   },
     // }),
     new webpack.DefinePlugin({
-      APPLICATION_CONFIG: JSON.stringify(applicationConfig),
+      ApplicationConfig: JSON.stringify(applicationConfig),
     }),
     new webpack.DefinePlugin({
-      APPLICATION_TEXT: JSON.stringify(applicationText),
+      ApplicationText: JSON.stringify(applicationText),
     }),
     new MiniCssExtractPlugin({
       filename: "admin-assets/css/bundle-[contenthash].css",
