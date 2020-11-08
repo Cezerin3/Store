@@ -4,6 +4,8 @@ Cezerin - Ecommerce Progressive Web Apps. Complete Solution.
 
 # Contributers are wanted!!! (Anyone are welcome!)
 
+# And put a star above if you like this, it'll help us a lot...!
+
 ## Quick Start
 
 1. Download from https://github.com/Cezerin3/Documentation/raw/main/src/cezerin3.zip
