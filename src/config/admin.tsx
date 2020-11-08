@@ -1,10 +1,4 @@
-// config used by dashboard client side only
-const Config = {
-  // dashboard UI language
-  language: "en",
-  apiBaseUrl: "http://localhost:3001/api/v1",
-  apiWebSocketUrl: "ws://localhost:3001",
-  developerMode: true,
-}
+// @ts-ignore
+import Config from "../../config/admin"
 
 export default Config

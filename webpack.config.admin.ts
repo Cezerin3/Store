@@ -1,10 +1,10 @@
+// @ts-nocheck
 const path = require("path")
 const webpack = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const applicationConfig = require("./config/admin.js")
-const applicationText = require(`./locales/${applicationConfig.language}.json`)
+const { language } = require("./config/admin.ts")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 
 module.exports = {
@@ -190,19 +190,13 @@ module.exports = {
     //     },
     //   },
     // }),
-    new webpack.DefinePlugin({
-      ApplicationConfig: JSON.stringify(applicationConfig),
-    }),
-    new webpack.DefinePlugin({
-      ApplicationText: JSON.stringify(applicationText),
-    }),
     new MiniCssExtractPlugin({
       filename: "admin-assets/css/bundle-[contenthash].css",
       chunkFilename: "admin-assets/css/bundle-[contenthash].css",
     }),
     new HtmlWebpackPlugin({
       template: "src/admin/client/index.html",
-      language: applicationConfig.language,
+      language: language,
       inject: "body",
       filename: "admin/index.html",
     }),
