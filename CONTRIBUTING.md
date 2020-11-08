@@ -1,25 +1,26 @@
-The .prettierrc can't be changed unless theirs much cleaner settings,
-JavaScript must follow camel case,
-W3 Standards at https://www.w3.org/standards/ should be followed,
-Only yarnpkg can be used as a package manager due to it's efficient and
-most currently updated,
-Best to serve images as .webp and copy of original image can also be added.
-All packages should be updated to latest version and should follow best practices,
-Classes are little bit discouraged and|or|but classes should be clean,
-Should add as strinct type settings and prop settings
-(You can ask a community to do this for you),
-Should follow at least esNext or higher,
-Discouraged to use outside assets such as images linking to another site so
-not to break anything on their change,
-This project should be as free as possible for access of everyone as the
-will of contributers,
-export defaults should be at the end of the file as refractor,
-Using !important in sass is discouraged,
-Components and functions needed to be preditable and easily understood,
-and best follow code quality checkers and hears my definition,
-(Programming languages were created to make it easier for humans not for computers,
-so why make it complicated and a best programming language is the one that can be most easiest to
-understand while being effiecient at the trade off of the performance!, Himadu Sirimanna)
+- The .prettierrc can't be changed unless theirs much cleaner settings,
+- JavaScript must follow camel case,
+- W3 Standards at https://www.w3.org/standards/ should be followed,
+- Only yarnpkg can be used as a package manager due to it's efficient and
+  most currently updated,
+- Best to serve images as .webp and copy of original image can also be added.
+- All packages should be updated to latest version and should follow best practices,
+- Classes are little bit discouraged and|or|but classes should be clean,
+- Should add as strict type settings and prop settings
+  (You can ask a community to do this for you),
+- Should follow at least esNext or higher,
+- Discouraged to use outside assets such as images linking to another site so
+  not to break anything on their change,
+- This project should be as free as possible for access of everyone as the
+  will of contributers,
+- export defaults should be at the end of the file as refractor,
+- Using !important in sass is discouraged,
+- Can't have empty divs and use <> when required,
+- Components and functions needed to be preditable and easily understood,
+  and best follow code quality checkers and hears my definition,
+  (Programming languages were created to make it easier for humans not for computers,
+  so why make it complicated and a best programming language is the one that can be most easiest to
+  understand while being effiecient at the trade off of the performance!, Himadu Sirimanna)
 
 Store, Admin and Server should be kept seperated so a user can host in
 different platforms as needed,
