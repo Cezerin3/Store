@@ -1,24 +1,20 @@
-import React from "react"
-import { Field, reduxForm } from "redux-form"
-import { Link } from "react-router-dom"
-import { TextField } from "redux-form-material-ui"
-
-import { CustomToggle } from "modules/shared/form"
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
 import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
-import { List, ListItem } from "material-ui/List"
+import React, { FC } from "react"
+import { Field, reduxForm } from "redux-form"
+import { TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
+import style from "./style.sass"
 
-const DeveloperForm = ({
-  handleSubmit,
-  pristine,
-  submitting,
-  initialValues,
-}) => {
+interface props {
+  handleSubmit
+  pristine
+  submitting
+}
+
+const DeveloperForm: FC<props> = (props: props) => {
+  const { handleSubmit, pristine, submitting } = props
+
   return (
     <div style={{ maxWidth: 720, width: "100%" }}>
       <div className="gray-title" style={{ margin: "15px 0 15px 20px" }}>
@@ -31,7 +27,7 @@ const DeveloperForm = ({
           width: "100%",
         }}
       >
-        <Paper style={{ margin: "0px 20px" }} zDepth={1}>
+        <Paper style={{ margin: "0px 20px" }} elevation={4}>
           <div style={{ padding: "10px 30px 30px 30px" }}>
             <div>
               <Field
