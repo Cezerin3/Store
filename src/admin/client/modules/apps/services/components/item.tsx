@@ -1,9 +1,8 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import messages from "lib/text"
-import style from "./style.css"
+import { CheckCircle } from "@material-ui/icons"
 import { Card, CardMedia, CardTitle } from "material-ui/Card"
-import FontIcon from "material-ui/FontIcon"
+import React, { FC } from "react"
+import { Link } from "react-router-dom"
+import style from "./style.module.sass"
 
 const styles = {
   card: {
@@ -36,7 +35,16 @@ const styles = {
   },
 }
 
-const Item = ({ path, coverUrl, title, developer, enabled }) => {
+interface props {
+  path
+  coverUrl
+  title
+  developer
+  enabled
+}
+
+const Item: FC<props> = (props: props) => {
+  const { path, coverUrl, title, developer, enabled } = props
   return (
     <Link to={path} style={styles.link}>
       <Card
@@ -54,12 +62,7 @@ const Item = ({ path, coverUrl, title, developer, enabled }) => {
             <div>
               {developer}
               {enabled && (
-                <FontIcon
-                  style={{ color: "#FF9900", float: "right" }}
-                  className="material-icons"
-                >
-                  check_circle
-                </FontIcon>
+                <CheckCircle style={{ color: "#FF9900", float: "right" }} />
               )}
             </div>
           }

@@ -4,7 +4,7 @@ import React, { FC } from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
 import { messages } from "../../../../lib"
-import style from "./style.sass"
+import style from "./style.module.sass"
 
 interface props {
   handleSubmit

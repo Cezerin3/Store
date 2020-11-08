@@ -1,20 +1,21 @@
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
 import React, { FC } from "react"
-import style from "./style.css"
+import style from "./style.module.sass"
 
 interface props {
-  name
-  description
-  coverUrl
-  developer
-  enabled
+  name: string
+  description: string
+  coverUrl: string
+  developer?: { name: string }
+  enabled?: boolean
 }
 
 const AppDescription: FC<props> = (props: props) => {
-  const { name, description, coverUrl, developer, enabled } = props
+  const { name, description, coverUrl, developer } = props
+
   return (
     <div style={{ maxWidth: 720, width: "100%" }}>
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={4}>
         <div className={style.innerBox}>
           <div className="row">
             <div className="col-xs-4">

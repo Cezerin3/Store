@@ -5,7 +5,7 @@ import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
 import { messages } from "../../../../lib"
 import { CustomToggle } from "../../../shared/form"
-import style from "./style.sass"
+import style from "./style.module.sass"
 
 interface props {
   handleSubmit
@@ -29,30 +29,24 @@ const AccountForm: FC<props> = (props: props) => {
       >
         <Paper style={{ margin: "0px 20px" }} elevation={4}>
           <div style={{ padding: "10px 30px 30px 30px" }}>
-            <div>
-              <Field
-                component={TextField}
-                fullWidth
-                name="email"
-                floatingLabelText={messages.email}
-              />
-            </div>
-            <div>
-              <Field
-                component={TextField}
-                fullWidth
-                name="shop_url"
-                floatingLabelText={messages.shopUrl}
-              />
-            </div>
-            <div>
-              <Field
-                component={TextField}
-                fullWidth
-                name="admin_url"
-                floatingLabelText={messages.adminUrl}
-              />
-            </div>
+            <Field
+              component={TextField}
+              fullWidth
+              name="email"
+              floatingLabelText={messages.email}
+            />
+            <Field
+              component={TextField}
+              fullWidth
+              name="shop_url"
+              floatingLabelText={messages.shopUrl}
+            />
+            <Field
+              component={TextField}
+              fullWidth
+              name="admin_url"
+              floatingLabelText={messages.adminUrl}
+            />
             <Field
               component={CustomToggle}
               name="is_developer"

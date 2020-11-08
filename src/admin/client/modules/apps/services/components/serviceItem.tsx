@@ -1,14 +1,26 @@
-import React from "react"
+import React, { FC } from "react"
 import Item from "./item"
 
-const ServiceItem = ({ service }) => {
+interface props {
+  service: {
+    id: string
+    cover_url: string
+    name: string
+    developer: { name: string }
+    enabled: boolean
+  }
+}
+
+const ServiceItem: FC<props> = ({ service }: props) => {
+  const { id, cover_url, name, developer, enabled } = service
+
   return (
     <Item
-      path={`/admin/apps/service/${service.id}`}
-      coverUrl={service.cover_url}
-      title={service.name}
-      developer={service.developer.name}
-      enabled={service.enabled}
+      path={`/admin/apps/service/${id}`}
+      coverUrl={cover_url}
+      title={name}
+      developer={developer.name}
+      enabled={enabled}
     />
   )
 }
