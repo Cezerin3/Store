@@ -7,9 +7,19 @@ import AppItem from "./appItem"
 import ServiceItem from "./serviceItem"
 
 interface props {
-  services
-  webstoreAuthorized
-  fetchData
+  services: {
+    data: {
+      id: string
+      cover_url: string
+      name: string
+      developer: {
+        name: string
+      }
+      enabled: boolean
+    }[]
+  }
+  webstoreAuthorized: boolean
+  fetchData: Function
 }
 
 const ServicesList = (props: props) => {
