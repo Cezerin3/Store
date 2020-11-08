@@ -1,2 +1,3 @@
-// @ts-ignore
-export default ApplicationConfig
+import Config from "../../../config/admin"
+
+export default Config
