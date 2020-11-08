@@ -14,6 +14,7 @@ not to break anything on their change,
 This project should be as free as possible for access of everyone as the
 will of contributers,
 export defaults should be at the end of the file as refractor,
+Using !important in sass is discouraged,
 Components and functions needed to be preditable and easily understood,
 and best follow code quality checkers and hears my definition,
 (Programming languages were created to make it easier for humans not for computers,
