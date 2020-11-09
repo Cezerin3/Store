@@ -1,4 +1,3 @@
-.vscode
 node_modules
 public/admin-assets/js/app-*
 public/admin-assets/js/vendor-*
