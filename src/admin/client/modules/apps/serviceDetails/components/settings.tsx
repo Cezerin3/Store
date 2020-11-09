@@ -1,24 +1,22 @@
+import { Paper } from "@material-ui/core"
+import Divider from "material-ui/Divider"
+import RaisedButton from "material-ui/RaisedButton"
+import { CustomToggle } from "modules/shared/form"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
-import { Link } from "react-router-dom"
 import { TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
-import { CustomToggle } from "modules/shared/form"
-import messages from "lib/text"
-import style from "./style.css"
+interface props {
+  handleSubmit
+  pristine
+  submitting
+  initialValues
+}
 
-import Paper from "material-ui/Paper"
-import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
-import { List, ListItem } from "material-ui/List"
-
-const ServiceSettingsForm = ({
-  handleSubmit,
-  pristine,
-  submitting,
-  initialValues,
-}) => {
+const ServiceSettingsForm = (props: props) => {
+  const { handleSubmit, pristine, submitting, initialValues } = props
   const fields = Object.keys(initialValues).map((key, index) => {
     const value = initialValues[key]
     return (
@@ -70,7 +68,7 @@ const ServiceSettingsForm = ({
           width: "100%",
         }}
       >
-        <Paper style={{ margin: "0px 20px" }} zDepth={1}>
+        <Paper style={{ margin: "0px 20px" }} elevation={4}>
           <div style={{ padding: "10px 30px 30px 30px" }}>{fields}</div>
           <div
             className="buttons-box"

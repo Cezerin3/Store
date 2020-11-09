@@ -1,15 +1,11 @@
-import React from "react"
-import { Field, FieldArray, reduxForm } from "redux-form"
 import messages from "lib/text"
-import style from "./style.css"
-import CategorySelect from "modules/productCategories/select"
-import FontIcon from "material-ui/FontIcon"
 import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
-const Fragment = React.Fragment
+import FontIcon from "material-ui/FontIcon"
+import CategorySelect from "modules/productCategories/select"
+import React from "react"
 
-export default class ProductCategorySelect extends React.Component {
+class ProductCategorySelect extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -48,21 +44,21 @@ export default class ProductCategorySelect extends React.Component {
       />,
       <FlatButton
         label={messages.save}
-        primary={true}
-        keyboardFocused={true}
+        primary
+        keyboardFocused
         onClick={this.close}
       />,
     ]
 
     return (
-      <Fragment>
+      <>
         <Dialog
           title={messages.category}
           actions={dialogButtons}
           modal={false}
           open={open}
           onRequestClose={this.close}
-          autoScrollBodyContent={true}
+          autoScrollBodyContent
         >
           <CategorySelect
             onSelect={this.handleSelect}
@@ -79,7 +75,9 @@ export default class ProductCategorySelect extends React.Component {
             </FontIcon>
           }
         />
-      </Fragment>
+      </>
     )
   }
 }
+
+export default ProductCategorySelect

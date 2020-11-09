@@ -1,17 +1,14 @@
-import React from "react"
-import { Link } from "react-router-dom"
 import messages from "lib/text"
-import CategorySelect from "modules/productCategories/select"
-import DeleteConfirmation from "modules/shared/deleteConfirmation"
-import FontIcon from "material-ui/FontIcon"
-import IconMenu from "material-ui/IconMenu"
-import IconButton from "material-ui/IconButton"
 import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
+import FontIcon from "material-ui/FontIcon"
+import IconButton from "material-ui/IconButton"
+import CategorySelect from "modules/productCategories/select"
+import DeleteConfirmation from "modules/shared/deleteConfirmation"
+import React from "react"
 import Search from "./search"
-const Fragment = React.Fragment
 
-export default class Buttons extends React.Component {
+class Buttons extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -69,19 +66,19 @@ export default class Buttons extends React.Component {
       />,
       <FlatButton
         label={messages.actions_moveHere}
-        primary={true}
-        keyboardFocused={true}
+        primary
+        keyboardFocused
         onClick={this.saveMoveTo}
       />,
     ]
 
     return (
-      <Fragment>
+      <>
         <Search value={search} setSearch={setSearch} />
         {selectedCount > 0 && (
-          <Fragment>
+          <>
             <IconButton
-              touch={true}
+              touch
               tooltipPosition="bottom-left"
               tooltip={messages.actions_delete}
               onClick={this.openDelete}
@@ -91,7 +88,7 @@ export default class Buttons extends React.Component {
               </FontIcon>
             </IconButton>
             <IconButton
-              touch={true}
+              touch
               tooltipPosition="bottom-left"
               tooltip={messages.actions_moveTo}
               onClick={this.showMoveTo}
@@ -113,18 +110,18 @@ export default class Buttons extends React.Component {
               modal={false}
               open={this.state.openMoveTo}
               onRequestClose={this.closeMoveTo}
-              autoScrollBodyContent={true}
+              autoScrollBodyContent
             >
               <CategorySelect
                 onSelect={this.selectMoveTo}
                 selectedId={this.state.categoryIdMoveTo}
-                opened={true}
+                opened
               />
             </Dialog>
-          </Fragment>
+          </>
         )}
         <IconButton
-          touch={true}
+          touch
           tooltipPosition="bottom-left"
           tooltip={messages.addProduct}
           onClick={onCreate}
@@ -133,7 +130,9 @@ export default class Buttons extends React.Component {
             add
           </FontIcon>
         </IconButton>
-      </Fragment>
+      </>
     )
   }
 }
+
+export default Buttons

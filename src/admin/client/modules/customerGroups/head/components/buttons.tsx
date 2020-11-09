@@ -1,16 +1,10 @@
-import React from "react"
 import messages from "lib/text"
-import DeleteConfirmation from "modules/shared/deleteConfirmation"
 import FontIcon from "material-ui/FontIcon"
-import IconMenu from "material-ui/IconMenu"
 import IconButton from "material-ui/IconButton"
-import MenuItem from "material-ui/MenuItem"
-import Dialog from "material-ui/Dialog"
-import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
-const Fragment = React.Fragment
+import DeleteConfirmation from "modules/shared/deleteConfirmation"
+import React from "react"
 
-export default class Buttons extends React.Component {
+class Buttons extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -41,9 +35,9 @@ export default class Buttons extends React.Component {
     return (
       <span>
         {selected && (
-          <Fragment>
+          <>
             <IconButton
-              touch={true}
+              touch
               tooltip={messages.actions_delete}
               tooltipPosition="bottom-left"
               onClick={this.showDelete}
@@ -54,16 +48,16 @@ export default class Buttons extends React.Component {
             </IconButton>
             <DeleteConfirmation
               open={this.state.openDelete}
-              isSingle={true}
+              isSingle
               itemsCount={1}
               itemName={groupName}
               onCancel={this.closeDelete}
               onDelete={this.deleteGroup}
             />
-          </Fragment>
+          </>
         )}
         <IconButton
-          touch={true}
+          touch
           tooltipPosition="bottom-left"
           tooltip={messages.customerGroups_titleAdd}
           onClick={onCreate}
@@ -76,3 +70,5 @@ export default class Buttons extends React.Component {
     )
   }
 }
+
+export default Buttons

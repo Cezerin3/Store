@@ -1,14 +1,8 @@
-import React from "react"
-import { Link } from "react-router-dom"
-
-import messages from "lib/text"
-import api from "lib/api"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
 import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
+import React from "react"
+import { api, messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 class ActionComponent extends React.Component {
   constructor(props) {
@@ -46,7 +40,7 @@ class ActionComponent extends React.Component {
           <div className="col-xs-5" style={{ textAlign: "right" }}>
             <RaisedButton
               label={action.name}
-              primary={true}
+              primary
               disabled={this.state.loading}
               onClick={this.handleActionCall}
             />
@@ -72,7 +66,7 @@ const ServiceActions = ({ actions, serviceId, fetchServiceLogs }) => {
       <div className="gray-title" style={{ margin: "15px 0 15px 20px" }}>
         {messages.serviceActions}
       </div>
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={4}>
         <div>{buttons}</div>
       </Paper>
     </div>

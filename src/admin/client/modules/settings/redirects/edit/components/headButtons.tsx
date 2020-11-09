@@ -1,11 +1,10 @@
-import React from "react"
-import messages from "lib/text"
-import DeleteConfirmation from "modules/shared/deleteConfirmation"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
-const { Fragment } = React
+import DeleteConfirmation from "modules/shared/deleteConfirmation"
+import React from "react"
+import { messages } from "../../../../../lib"
 
-export default class Buttons extends React.Component {
+class Buttons extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -35,7 +34,7 @@ export default class Buttons extends React.Component {
 
     if (redirect) {
       return (
-        <Fragment>
+        <>
           <IconButton
             touch
             tooltipPosition="bottom-left"
@@ -54,9 +53,11 @@ export default class Buttons extends React.Component {
             onCancel={this.closeDelete}
             onDelete={this.deletePage}
           />
-        </Fragment>
+        </>
       )
     }
     return null
   }
 }
+
+export default Buttons

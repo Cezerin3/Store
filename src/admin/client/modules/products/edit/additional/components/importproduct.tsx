@@ -1,13 +1,9 @@
-/* eslint-disable */
-
-import React from "react"
-import FlatButton from "material-ui/FlatButton"
-import FontIcon from "material-ui/FontIcon"
-import Paper from "material-ui/Paper"
-import messages from "lib/text"
 import api from "lib/api"
+import FlatButton from "material-ui/FlatButton"
+import Paper from "material-ui/Paper"
+import React from "react"
+import { messages } from "../../../../../lib"
 
-const Fragment = React.Fragment
 const updateProductArray = []
 const categoryIdArray = []
 const imageFilesArray = []
@@ -498,7 +494,7 @@ class ProductImport extends React.Component {
       display: "none",
     }
     return (
-      <Fragment>
+      <>
         <div style={{ width: "100%" }}>
           <div
             className="spread-sheet-container"
@@ -575,8 +571,8 @@ class ProductImport extends React.Component {
                 <FlatButton
                   label={messages.import}
                   files={files}
-                  primary={true}
-                  keyboardFocused={true}
+                  primary
+                  keyboardFocused
                   onClick={this.fetchData}
                   className={"spread-sheet-save-btn"}
                 />
@@ -584,7 +580,7 @@ class ProductImport extends React.Component {
             </Paper>
           </div>
         </div>
-      </Fragment>
+      </>
     )
   }
 }

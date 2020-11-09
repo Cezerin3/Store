@@ -1,11 +1,11 @@
 import React from "react"
-import ServiceDescription from "./description"
-import ServiceSettings from "./settings"
 import ServiceActions from "./actions"
+import ServiceDescription from "./description"
 import ServiceLogs from "./logs"
-import style from "./style.css"
+import ServiceSettings from "./settings"
+import style from "./style.module.sass"
 
-export default class ServiceDetails extends React.Component {
+class ServiceDetails extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -88,3 +88,5 @@ export default class ServiceDetails extends React.Component {
     )
   }
 }
+
+export default ServiceDetails

@@ -1,24 +1,22 @@
-import React from "react"
-import { Link } from "react-router-dom"
-
+import { Paper } from "@material-ui/core"
 import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
 import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
+import React from "react"
+import style from "./style.module.sass"
 
-const ServiceDescription = ({
-  service,
-  loadingEnableDisable,
-  enableService,
-  disableService,
-}) => {
+interface props {
+  service
+  loadingEnableDisable
+  enableService
+  disableService
+}
+
+const ServiceDescription = (props: props) => {
+  const { service, loadingEnableDisable, enableService, disableService } = props
   if (service) {
     return (
       <div style={{ maxWidth: 720, width: "100%" }}>
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           <div className={style.innerBox}>
             <div className="row">
               <div className="col-xs-4">
