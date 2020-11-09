@@ -1,8 +1,10 @@
 // config used by dashboard client side only
-module.exports = {
+const Config = {
   // dashboard UI language
-  language: "en",
+  language: process.env.CONFIG_ADMIN_LANGUAGE, // Edit at .env file!
   apiBaseUrl: "http://localhost:3001/api/v1",
   apiWebSocketUrl: "ws://localhost:3001",
   developerMode: true,
 }
+
+export default Config

@@ -4,7 +4,6 @@ const webpack = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const { language } = require("./config/admin.ts")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 
 module.exports = {
@@ -196,7 +195,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "src/admin/client/index.html",
-      language: language,
+      language: process.env.CONFIG_ADMIN_LANGUAGE,
       inject: "body",
       filename: "admin/index.html",
     }),
