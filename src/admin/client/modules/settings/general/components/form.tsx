@@ -8,7 +8,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { Field, reduxForm } from "redux-form"
 import { SelectField, TextField } from "redux-form-material-ui"
-import { messages } from "../../../../lib"
+import { data, messages } from "../../../../lib"
 import style from "./style.module.sass"
 
 class GeneralSettings extends React.Component {
