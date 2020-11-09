@@ -60,14 +60,14 @@ class CustomerEditForm extends React.Component {
           <div>
             <Field
               component={TextField}
-              fullWidth={true}
+              fullWidth
               name="full_name"
-              floatingLabelText={messages.full_name}
+              floatingLabelText={messages.fullName}
             />
           </div>
           <Field
             component={SelectField}
-            fullWidth={true}
+            fullWidth
             name="group_id"
             floatingLabelText={messages.group}
           >
@@ -76,7 +76,7 @@ class CustomerEditForm extends React.Component {
           <div>
             <Field
               component={TextField}
-              fullWidth={true}
+              fullWidth
               name="email"
               floatingLabelText={messages.email}
             />
@@ -84,7 +84,7 @@ class CustomerEditForm extends React.Component {
           <div>
             <Field
               component={TextField}
-              fullWidth={true}
+              fullWidth
               name="mobile"
               floatingLabelText={messages.mobile}
             />
@@ -92,10 +92,10 @@ class CustomerEditForm extends React.Component {
           <div>
             <Field
               component={TextField}
-              fullWidth={true}
+              fullWidth
               name="note"
               floatingLabelText={messages.note}
-              multiLine={true}
+              multiLine
             />
           </div>
         </div>
@@ -103,7 +103,7 @@ class CustomerEditForm extends React.Component {
           <FlatButton label={messages.cancel} onClick={onCancel} />
           <FlatButton
             label={messages.save}
-            primary={true}
+            primary
             type="submit"
             style={{ marginLeft: 12 }}
             disabled={pristine || submitting}
