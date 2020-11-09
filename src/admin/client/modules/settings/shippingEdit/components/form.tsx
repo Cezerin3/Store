@@ -1,13 +1,12 @@
-import messages from "lib/text"
-import Divider from "material-ui/Divider"
-import Paper from "material-ui/Paper"
+import { Divider, Paper } from "@material-ui/core"
 import RaisedButton from "material-ui/RaisedButton"
 import { CustomToggle } from "modules/shared/form"
 import React, { FC, useEffect } from "react"
 import { Field, FieldArray, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
 import FieldsEditor from "./fieldsEditor"
-import style from "./style.css"
+import style from "./style.module.sass"
 
 const validate = values => {
   const errors = {}
@@ -32,7 +31,7 @@ const EditShippingMethodForm: FC = (props: any) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={4}>
         <div className={style.innerBox}>
           <div className="row">
             <div className="col-xs-12 col-sm-4">

@@ -1,15 +1,10 @@
+import { Paper } from "@material-ui/core"
+import RaisedButton from "material-ui/RaisedButton"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
-import { TextField, SelectField } from "redux-form-material-ui"
-
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
-import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
-import { List, ListItem } from "material-ui/List"
+import { TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 class EmailSettings extends React.Component {
   constructor(props) {
@@ -21,7 +16,7 @@ class EmailSettings extends React.Component {
   }
 
   render() {
-    let { handleSubmit, pristine, submitting, initialValues } = this.props
+    let { handleSubmit, pristine, submitting } = this.props
 
     return (
       <form
@@ -31,7 +26,7 @@ class EmailSettings extends React.Component {
           width: "100%",
         }}
       >
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           <div className={style.innerBox}>
             <div>
               <Field

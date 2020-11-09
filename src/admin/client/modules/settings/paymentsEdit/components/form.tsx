@@ -1,20 +1,15 @@
+import { Divider, Paper } from "@material-ui/core"
+import MenuItem from "material-ui/MenuItem"
+import RaisedButton from "material-ui/RaisedButton"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
-import { TextField, SelectField } from "redux-form-material-ui"
-
-import { CustomToggle } from "modules/shared/form"
-import PaymentGateway from "modules/settings/paymentGateway"
-import { AVAILABLE_PAYMENT_GATEWAYS } from "modules/settings/paymentGateway/availablePaymentGateways"
+import { SelectField, TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
+import { CustomToggle } from "../../../shared/form"
+import PaymentGateway from "../../paymentGateway"
+import { availablePaymentGateways } from "../../paymentGateway/availablePaymentGateways"
 import SelectShippingMethodsField from "./selectShipping"
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
-import Divider from "material-ui/Divider"
-import RaisedButton from "material-ui/RaisedButton"
-import MenuItem from "material-ui/MenuItem"
-import { List, ListItem } from "material-ui/List"
-import Checkbox from "material-ui/Checkbox"
+import style from "./style.module.sass"
 
 const validate = values => {
   const errors = {}
@@ -60,7 +55,6 @@ class EditPaymentMethodForm extends React.Component {
       handleSubmit,
       pristine,
       submitting,
-      initialValues,
       shippingMethods,
       methodId,
       settings,
@@ -68,7 +62,7 @@ class EditPaymentMethodForm extends React.Component {
     const isAdd = methodId === null || methodId === undefined
     let paymentGateways = []
     paymentGateways.push(<MenuItem value="" key="none" primaryText="None" />)
-    for (const gateway of AVAILABLE_PAYMENT_GATEWAYS) {
+    for (const gateway of availablePaymentGateways) {
       paymentGateways.push(
         <MenuItem
           value={gateway.key}
@@ -80,7 +74,7 @@ class EditPaymentMethodForm extends React.Component {
 
     return (
       <form onSubmit={handleSubmit}>
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           <div className={style.innerBox}>
             <div className="row">
               <div className="col-xs-12 col-sm-4">

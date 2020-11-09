@@ -1,8 +1,7 @@
-import api from "lib/api"
+import { Paper } from "@material-ui/core"
 import FlatButton from "material-ui/FlatButton"
-import Paper from "material-ui/Paper"
 import React from "react"
-import { messages } from "../../../../../lib"
+import { api, messages } from "../../../../../lib"
 
 const updateProductArray = []
 const categoryIdArray = []
@@ -542,7 +541,7 @@ class ProductImport extends React.Component {
                 </span>
               </p>
             </div>
-            <Paper className="paper-box" zDepth={1}>
+            <Paper className="paper-box" elevation={4}>
               <fieldset className="spread-sheet-table">
                 <div className="schedule padd-lr">
                   <div className="tbl-header">

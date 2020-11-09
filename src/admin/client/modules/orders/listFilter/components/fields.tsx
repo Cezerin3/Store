@@ -1,23 +1,39 @@
-import React from "react"
-import messages from "lib/text"
-import style from "./style.css"
-import SelectField from "material-ui/SelectField"
 import MenuItem from "material-ui/MenuItem"
+import SelectField from "material-ui/SelectField"
+import React from "react"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
-export default ({
-  isClosed,
-  isCancelled,
-  isDelivered,
-  isPaid,
-  isHold,
-  isDraft,
-  setClosed,
-  setCancelled,
-  setDelivered,
-  setPaid,
-  setHold,
-  setDraft,
-}) => {
+interface props {
+  isClosed
+  isCancelled
+  isDelivered
+  isPaid
+  isHold
+  isDraft
+  setClosed
+  setCancelled
+  setDelivered
+  setPaid
+  setHold
+  setDraft
+}
+
+export default (props: props) => {
+  const {
+    isClosed,
+    isCancelled,
+    isDelivered,
+    isPaid,
+    isHold,
+    isDraft,
+    setClosed,
+    setCancelled,
+    setDelivered,
+    setPaid,
+    setHold,
+    setDraft,
+  } = props
   return (
     <div className={style.filter}>
       <SelectField

@@ -1,22 +1,18 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Field, FieldArray, reduxForm } from "redux-form"
-import { TextField, SelectField } from "redux-form-material-ui"
-
-import { CustomToggle } from "modules/shared/form"
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
-import RaisedButton from "material-ui/RaisedButton"
+import { Paper } from "@material-ui/core"
 import FontIcon from "material-ui/FontIcon"
-import IconMenu from "material-ui/IconMenu"
 import IconButton from "material-ui/IconButton"
+import IconMenu from "material-ui/IconMenu"
 import MenuItem from "material-ui/MenuItem"
+import RaisedButton from "material-ui/RaisedButton"
+import { CustomToggle } from "modules/shared/form"
+import React from "react"
+import { Field } from "redux-form"
+import { TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
 
-const FieldsEditor = ({ fields, meta: { touched, error, submitFailed } }) => {
+const FieldsEditor = ({ fields }) => {
   return (
-    <div>
+    <>
       {fields.map((field, index) => {
         const fieldKey = `${field}.key`
         const fieldLabel = `${field}.label`
@@ -25,7 +21,7 @@ const FieldsEditor = ({ fields, meta: { touched, error, submitFailed } }) => {
         return (
           <Paper
             className="paper-box"
-            zDepth={1}
+            elevation={4}
             rounded={false}
             key={index}
             style={{
@@ -99,7 +95,7 @@ const FieldsEditor = ({ fields, meta: { touched, error, submitFailed } }) => {
       <div style={{ margin: "20px 0px" }}>
         <RaisedButton label={messages.add} onClick={() => fields.push({})} />
       </div>
-    </div>
+    </>
   )
 }
 

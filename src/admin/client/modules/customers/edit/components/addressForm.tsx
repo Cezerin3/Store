@@ -1,14 +1,9 @@
+import FlatButton from "material-ui/FlatButton"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
-import { TextField, SelectField } from "redux-form-material-ui"
-
-import { CustomToggle } from "modules/shared/form"
-import messages from "lib/text"
-import style from "./style.css"
-
-import Divider from "material-ui/Divider"
-import RaisedButton from "material-ui/RaisedButton"
-import FlatButton from "material-ui/FlatButton"
+import { TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 const validate = values => {
   const errors = {}
@@ -51,7 +46,7 @@ class CustomerAddressForm extends React.Component {
               component={TextField}
               fullWidth={true}
               name="full_name"
-              floatingLabelText={messages.full_name}
+              floatingLabelText={messages.fullName}
             />
           </div>
           <div>

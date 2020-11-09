@@ -1,11 +1,10 @@
+import moment from "moment"
 import React from "react"
-import messages from "lib/text"
-import api from "lib/api"
+import { api, messages } from "../../../lib"
 import BarChart from "./barChart"
 import * as utils from "./utils"
-import moment from "moment"
 
-export default class OrdersBar extends React.Component {
+class OrdersBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -61,3 +60,5 @@ export default class OrdersBar extends React.Component {
     )
   }
 }
+
+export default OrdersBar

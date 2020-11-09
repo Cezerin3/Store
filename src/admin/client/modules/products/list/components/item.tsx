@@ -1,10 +1,9 @@
+import { Divider } from "@material-ui/core"
+import FontIcon from "material-ui/FontIcon"
 import React from "react"
 import { Link } from "react-router-dom"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
-import messages from "lib/text"
-import * as helper from "lib/helper"
-import style from "./style.css"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 const THUMBNAIL_WIDTH = 100
 const ImagePlaceholder = (

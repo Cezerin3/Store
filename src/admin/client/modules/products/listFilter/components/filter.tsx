@@ -1,18 +1,19 @@
-import React from "react"
-import messages from "lib/text"
-import style from "./style.css"
-
-import SelectField from "material-ui/SelectField"
 import MenuItem from "material-ui/MenuItem"
-import Toggle from "material-ui/Toggle"
+import SelectField from "material-ui/SelectField"
+import React from "react"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
-const Filter = ({
-  filter,
-  setEnabled,
-  setDiscontinued,
-  setOnSale,
-  setStock,
-}) => {
+interface props {
+  filter
+  setEnabled
+  setDiscontinued
+  setOnSale
+  setStock
+}
+
+const Filter = (props: props) => {
+  const { filter, setEnabled, setDiscontinued, setOnSale, setStock } = props
   const { enabled, discontinued, onSale, stockStatus } = filter
 
   return (

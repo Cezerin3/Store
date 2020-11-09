@@ -1,15 +1,15 @@
+import { Paper } from "@material-ui/core"
 import * as helper from "lib/helper"
 import messages from "lib/text"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
 import IconMenu from "material-ui/IconMenu"
 import MenuItem from "material-ui/MenuItem"
-import Paper from "material-ui/Paper"
 import DeleteConfirmation from "modules/shared/deleteConfirmation"
 import moment from "moment"
 import React from "react"
 import FileUploader from "./fileUploader"
-import style from "./style.css"
+import style from "./style.module.sass"
 
 const iconButtonElement = (
   <IconButton touch={true}>
@@ -106,7 +106,7 @@ class FileList extends React.Component {
           <div className="col-xs-2">{messages.fileSize}</div>
           <div className="col-xs-2" />
         </div>
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           {listItems}
         </Paper>
         <FileUploader onUpload={onUpload} uploading={uploading} />

@@ -1,23 +1,22 @@
+import MenuItem from "material-ui/MenuItem"
 import React from "react"
-import { Field, FieldArray, reduxForm } from "redux-form"
-import { TextField, SelectField } from "redux-form-material-ui"
-
-import { CustomToggle, NumberField, ColorField } from "modules/shared/form"
-import messages from "lib/text"
-import * as helper from "lib/helper"
-import style from "./style.css"
+import { Field, FieldArray } from "redux-form"
+import { SelectField, TextField } from "redux-form-material-ui"
+import { ColorField, CustomToggle, NumberField } from "../../../shared/form"
 import ArrayEditor from "./arrayEditor"
 import ImageEditor from "./imageEditor"
+import style from "./style.module.sass"
 
-import MenuItem from "material-ui/MenuItem"
+interface props {
+  type
+  fieldName
+  label
+  options
+  properties
+}
 
-const DynamicEditControl = ({
-  type,
-  fieldName,
-  label,
-  options,
-  properties,
-}) => {
+const DynamicEditControl = (props: props) => {
+  const { type, fieldName, label, options, properties } = props
   const hasOptions = options && Array.isArray(options) && options.length > 0
   const hasProperties =
     properties && Array.isArray(properties) && properties.length > 0

@@ -1,13 +1,9 @@
 import React from "react"
-
-import messages from "lib/text"
-import style from "./style.css"
-
-import CustomerSummary from "./summary"
-import CustomerOrders from "./orders"
 import CustomerAddresses from "./addresses"
+import CustomerOrders from "./orders"
+import CustomerSummary from "./summary"
 
-export default class CustomerDetails extends React.Component {
+class CustomerDetails extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -57,3 +53,5 @@ export default class CustomerDetails extends React.Component {
     )
   }
 }
+
+export default CustomerDetails

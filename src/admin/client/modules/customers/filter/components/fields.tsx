@@ -1,21 +1,32 @@
-import React from "react"
-import messages from "lib/text"
-import style from "./style.css"
-
-import SelectField from "material-ui/SelectField"
 import MenuItem from "material-ui/MenuItem"
+import SelectField from "material-ui/SelectField"
 import Toggle from "material-ui/Toggle"
+import React from "react"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
-export default ({
-  active,
-  discontinued,
-  on_sale,
-  stock_status,
-  setActive,
-  setDiscontinued,
-  setOnSale,
-  setStock,
-}) => {
+interface props {
+  active
+  discontinued
+  on_sale
+  stock_status
+  setActive
+  setDiscontinued
+  setOnSale
+  setStock
+}
+
+export default (props: props) => {
+  const {
+    active,
+    discontinued,
+    on_sale,
+    stock_status,
+    setActive,
+    setDiscontinued,
+    setOnSale,
+    setStock,
+  } = props
   return (
     <div className={style.filter}>
       <Toggle

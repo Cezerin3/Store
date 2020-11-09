@@ -1,26 +1,20 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Field, FieldArray, reduxForm } from "redux-form"
-import { TextField } from "redux-form-material-ui"
-
-import api from "lib/api"
-import * as helper from "lib/helper"
-import messages from "lib/text"
-import style from "./style.css"
-
-import TagsInput from "react-tagsinput"
-import ProductSearchDialog from "modules/shared/productSearch"
-import ProductCategorySelect from "./productCategorySelect"
-import ProductCategoryMultiSelect from "./productCategoryMultiSelect"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
+import FlatButton from "material-ui/FlatButton"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
-import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
 import IconMenu from "material-ui/IconMenu"
 import MenuItem from "material-ui/MenuItem"
-const Fragment = React.Fragment
+import RaisedButton from "material-ui/RaisedButton"
+import ProductSearchDialog from "modules/shared/productSearch"
+import React from "react"
+import { Link } from "react-router-dom"
+import TagsInput from "react-tagsinput"
+import { Field, FieldArray, reduxForm } from "redux-form"
+import { TextField } from "redux-form-material-ui"
+import { api, helper, messages } from "../../../../../lib"
+import ProductCategoryMultiSelect from "./productCategoryMultiSelect"
+import ProductCategorySelect from "./productCategorySelect"
+import style from "./style.module.sass"
 
 const TagsField = ({ input, placeholder }) => {
   const tagsArray = input.value && Array.isArray(input.value) ? input.value : []
@@ -191,7 +185,7 @@ class ProductsArray extends React.Component {
 
     return (
       <div>
-        <Paper className={style.relatedProducts} zDepth={1}>
+        <Paper className={style.relatedProducts} elevation={4}>
           {fields.map((field, index) => {
             const actions = (
               <RelatedProductActions fields={fields} index={index} />
@@ -241,7 +235,7 @@ const ProductAdditionalForm = ({
 }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={1}>
         <div className={style.innerBox}>
           <div
             className="row middle-xs"

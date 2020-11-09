@@ -1,15 +1,13 @@
-import React from "react"
-import messages from "lib/text"
-import Dropzone from "react-dropzone"
-
-import Paper from "material-ui/Paper"
-import Snackbar from "material-ui/Snackbar"
+import { Paper } from "@material-ui/core"
+import { messages } from "lib/text"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
+import Snackbar from "material-ui/Snackbar"
+import React from "react"
+import Dropzone from "react-dropzone"
+import style from "./style.module.sass"
 
-import style from "./style.css"
-
-export default class ImageUpload extends React.Component {
+class ImageUpload extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -62,7 +60,7 @@ export default class ImageUpload extends React.Component {
     }
 
     return (
-      <Paper zDepth={1} rounded={false} style={{ width: 200 }}>
+      <Paper elevation={4} rounded={false} style={{ width: 200 }}>
         <Dropzone
           onDrop={this.onDrop}
           multiple={false}
@@ -110,3 +108,5 @@ export default class ImageUpload extends React.Component {
     )
   }
 }
+
+export default ImageUpload

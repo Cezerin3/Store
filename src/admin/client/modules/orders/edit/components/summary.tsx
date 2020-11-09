@@ -1,15 +1,11 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import moment from "moment"
-
-import messages from "lib/text"
-import * as helper from "lib/helper"
-import style from "./style.css"
-import SummaryForm from "./summaryForm"
-
-import Paper from "material-ui/Paper"
-import RaisedButton from "material-ui/RaisedButton"
+import { Paper } from "@material-ui/core"
 import Dialog from "material-ui/Dialog"
+import RaisedButton from "material-ui/RaisedButton"
+import moment from "moment"
+import React from "react"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
+import SummaryForm from "./summaryForm"
 
 const getOrderStates = order => {
   let states = []
@@ -113,7 +109,7 @@ export default class OrderSummary extends React.Component {
       )
 
     return (
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={4}>
         <div className={style.innerBox}>
           <div className={style.states}>{states}</div>
 

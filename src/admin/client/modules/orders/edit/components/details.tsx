@@ -1,16 +1,12 @@
+import { Paper } from "@material-ui/core"
 import React from "react"
-
-import messages from "lib/text"
-import style from "./style.css"
-
-import OrderTotals from "./totals"
-import OrderSummary from "./summary"
-import OrderItems from "./items"
 import OrderCustomer from "./customer"
+import OrderItems from "./items"
+import style from "./style.module.sass"
+import OrderSummary from "./summary"
+import OrderTotals from "./totals"
 
-import Paper from "material-ui/Paper"
-
-export default class OrderDetails extends React.Component {
+class OrderDetails extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -74,3 +70,5 @@ export default class OrderDetails extends React.Component {
     )
   }
 }
+
+export default OrderDetails

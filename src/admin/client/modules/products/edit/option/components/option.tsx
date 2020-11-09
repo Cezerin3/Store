@@ -1,17 +1,14 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Field, reduxForm } from "redux-form"
-import { TextField, SelectField } from "redux-form-material-ui"
-import { CustomToggle } from "modules/shared/form"
-import OptionValues from "./values"
-
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
 import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
 import MenuItem from "material-ui/MenuItem"
+import RaisedButton from "material-ui/RaisedButton"
+import React from "react"
+import { Field, reduxForm } from "redux-form"
+import { SelectField, TextField } from "redux-form-material-ui"
+import { messages } from "../../../../../lib"
+import { CustomToggle } from "../../../../shared/form"
+import style from "./style.module.sass"
+import OptionValues from "./values"
 
 const validate = values => {
   const errors = {}
@@ -52,7 +49,7 @@ class ProductOptionForm extends React.Component {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Paper className="paper-box" zDepth={1}>
+          <Paper className="paper-box" elevation={4}>
             <div className={style.innerBox}>
               <Field
                 name="name"

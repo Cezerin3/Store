@@ -1,12 +1,9 @@
-import React from "react"
-import { Link } from "react-router-dom"
-
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
+import React from "react"
+import { messages } from "../../../../../lib"
+import style from "./style.module.sass"
 
 class OptionValueEdit extends React.Component {
   constructor(props) {

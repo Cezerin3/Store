@@ -1,12 +1,11 @@
+import RaisedButton from "material-ui/RaisedButton"
+import Snackbar from "material-ui/Snackbar"
 import React from "react"
 import Dropzone from "react-dropzone"
-import messages from "lib/text"
-import style from "./style.css"
+import { messages } from "../../../lib"
+import style from "./style.module.sass"
 
-import Snackbar from "material-ui/Snackbar"
-import RaisedButton from "material-ui/RaisedButton"
-
-export default class MultiUploader extends React.Component {
+class MultiUploader extends React.Component {
   onDrop = files => {
     let form = new FormData()
     files.map(file => {
@@ -60,3 +59,5 @@ export default class MultiUploader extends React.Component {
     )
   }
 }
+
+export default MultiUploader

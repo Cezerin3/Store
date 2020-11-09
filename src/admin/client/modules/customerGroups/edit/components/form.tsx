@@ -1,13 +1,11 @@
+import { Paper } from "@material-ui/core"
+import FlatButton from "material-ui/FlatButton"
+import RaisedButton from "material-ui/RaisedButton"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
-
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
-import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 const validate = values => {
   const errors = {}
@@ -43,7 +41,7 @@ class Form extends React.Component {
     }
 
     return (
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={4}>
         <form onSubmit={handleSubmit}>
           <div className={style.innerBox}>
             <Field

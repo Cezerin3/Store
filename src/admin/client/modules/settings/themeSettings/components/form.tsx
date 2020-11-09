@@ -1,16 +1,12 @@
-import React from "react"
-import { Field, FieldArray, reduxForm } from "redux-form"
-
-import messages from "lib/text"
-import * as helper from "lib/helper"
+import { Paper } from "@material-ui/core"
 import sortBy from "lodash/sortBy"
-import style from "./style.css"
-import DynamicEditControl from "./dynamicEditControl"
-import ArrayEditor from "./arrayEditor"
-
-import Paper from "material-ui/Paper"
 import FlatButton from "material-ui/FlatButton"
 import RaisedButton from "material-ui/RaisedButton"
+import React from "react"
+import { reduxForm } from "redux-form"
+import { messages } from "../../../../lib"
+import DynamicEditControl from "./dynamicEditControl"
+import style from "./style.module.sass"
 
 class ThemeSettings extends React.Component {
   constructor(props) {
@@ -69,7 +65,7 @@ class ThemeSettings extends React.Component {
           <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
             {messages.themeSettings}
           </div>
-          <Paper className="paper-box" zDepth={1}>
+          <Paper className="paper-box" elevation={4}>
             <div className={style.innerBox}>{fields}</div>
             <div className="buttons-box">
               <FlatButton

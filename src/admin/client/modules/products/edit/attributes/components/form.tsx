@@ -1,15 +1,12 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Field, FieldArray, reduxForm } from "redux-form"
-
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
+import FlatButton from "material-ui/FlatButton"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
-import FlatButton from "material-ui/FlatButton"
 import RaisedButton from "material-ui/RaisedButton"
+import React from "react"
+import { Field, FieldArray, reduxForm } from "redux-form"
+import { messages } from "../../../../../lib"
+import style from "./style.module.sass"
 
 const AttributesGrid = ({ fields, meta: { touched, error, submitFailed } }) => {
   return (
@@ -79,16 +76,18 @@ const AttributesGrid = ({ fields, meta: { touched, error, submitFailed } }) => {
   )
 }
 
-const ProductAttributesForm = ({
-  handleSubmit,
-  pristine,
-  reset,
-  submitting,
-  initialValues,
-}) => {
+interface props {
+  handleSubmit
+  pristine
+  reset
+  submitting
+}
+
+const ProductAttributesForm = (props: props) => {
+  const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={4}>
         <FieldArray name="attributes" component={AttributesGrid} />
         <div
           className={

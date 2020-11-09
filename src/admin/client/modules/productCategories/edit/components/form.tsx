@@ -1,18 +1,14 @@
+import { Paper } from "@material-ui/core"
+import FlatButton from "material-ui/FlatButton"
+import RaisedButton from "material-ui/RaisedButton"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
-import Editor from "modules/shared/editor"
-
-import { CustomToggle } from "modules/shared/form"
-import ImageUpload from "modules/shared/imageUpload"
-import messages from "lib/text"
-import style from "./style.css"
-import settings from "lib/settings"
-import api from "lib/api"
-
-import Paper from "material-ui/Paper"
-import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
+import { api, messages } from "../../../../lib"
+import Editor from "../../../shared/editor"
+import { CustomToggle } from "../../../shared/form"
+import ImageUpload from "../../../shared/imageUpload"
+import style from "./style.module.sass"
 
 const validate = values => {
   const errors = {}

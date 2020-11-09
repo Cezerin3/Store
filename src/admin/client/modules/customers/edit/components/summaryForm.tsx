@@ -1,16 +1,11 @@
-import React from "react"
-import { Field, reduxForm } from "redux-form"
-import { TextField, SelectField } from "redux-form-material-ui"
-
-import { CustomToggle } from "modules/shared/form"
 import api from "lib/api"
-import messages from "lib/text"
-import style from "./style.css"
-
-import Divider from "material-ui/Divider"
-import RaisedButton from "material-ui/RaisedButton"
 import FlatButton from "material-ui/FlatButton"
 import MenuItem from "material-ui/MenuItem"
+import React from "react"
+import { Field, reduxForm } from "redux-form"
+import { SelectField, TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 const validate = values => {
   const errors = {}
@@ -40,13 +35,7 @@ class CustomerEditForm extends React.Component {
   }
 
   render() {
-    let {
-      handleSubmit,
-      pristine,
-      submitting,
-      initialValues,
-      onCancel,
-    } = this.props
+    let { handleSubmit, pristine, submitting, onCancel } = this.props
 
     let groupItems = this.state.groups.map((item, index) => (
       <MenuItem key={index} value={item.id} primaryText={item.name} />

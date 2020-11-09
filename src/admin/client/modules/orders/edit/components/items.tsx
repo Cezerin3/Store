@@ -1,7 +1,5 @@
-import * as helper from "lib/helper"
-import messages from "lib/text"
+import { Divider } from "@material-ui/core"
 import Dialog from "material-ui/Dialog"
-import Divider from "material-ui/Divider"
 import FlatButton from "material-ui/FlatButton"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
@@ -10,7 +8,8 @@ import MenuItem from "material-ui/MenuItem"
 import SelectField from "material-ui/SelectField"
 import React from "react"
 import { Link } from "react-router-dom"
-import style from "./style.css"
+import { helper, messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 const iconButtonElement = (
   <IconButton touch={true}>

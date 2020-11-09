@@ -1,20 +1,15 @@
-import React from "react"
-import { Field, reduxForm } from "redux-form"
-import { Link } from "react-router-dom"
-import { TextField, SelectField, DatePicker } from "redux-form-material-ui"
-
-import { CustomToggle } from "modules/shared/form"
-import messages from "lib/text"
-import data from "lib/data"
-
-import Paper from "material-ui/Paper"
-import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
-import DropDownMenu from "material-ui/DropDownMenu"
-import MenuItem from "material-ui/MenuItem"
+import { Divider, Paper } from "@material-ui/core"
 import FontIcon from "material-ui/FontIcon"
 import { List, ListItem } from "material-ui/List"
-import style from "./style.css"
+import MenuItem from "material-ui/MenuItem"
+import RaisedButton from "material-ui/RaisedButton"
+import { CustomToggle } from "modules/shared/form"
+import React from "react"
+import { Link } from "react-router-dom"
+import { Field, reduxForm } from "redux-form"
+import { SelectField, TextField } from "redux-form-material-ui"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 class GeneralSettings extends React.Component {
   componentDidMount() {
@@ -74,7 +69,7 @@ class GeneralSettings extends React.Component {
           width: "100%",
         }}
       >
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           <div className={style.innerBox}>
             <div style={{ width: "100%" }}>
               <List>

@@ -1,12 +1,10 @@
+import { Paper } from "@material-ui/core"
+import RaisedButton from "material-ui/RaisedButton"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
-
-import messages from "lib/text"
-
-import Paper from "material-ui/Paper"
-import RaisedButton from "material-ui/RaisedButton"
-import style from "./style.css"
+import { messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 class EmailTemplate extends React.Component {
   componentDidMount() {
@@ -24,7 +22,7 @@ class EmailTemplate extends React.Component {
           width: "100%",
         }}
       >
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           <div className={style.innerBox}>
             <div>
               <Field

@@ -1,17 +1,12 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Field, reduxForm } from "redux-form"
-import { TextField, SelectField, DatePicker } from "redux-form-material-ui"
-import { CustomToggle } from "modules/shared/form"
-
-import messages from "lib/text"
-import style from "./style.css"
-import api from "lib/api"
-
-import Paper from "material-ui/Paper"
+import { Divider, Paper } from "@material-ui/core"
 import FlatButton from "material-ui/FlatButton"
 import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
+import React from "react"
+import { Field, reduxForm } from "redux-form"
+import { DatePicker, TextField } from "redux-form-material-ui"
+import { api, messages } from "../../../../../lib"
+import { CustomToggle } from "../../../../shared/form"
+import style from "./style.module.sass"
 
 const validate = values => {
   const errors = {}
@@ -80,17 +75,19 @@ const asyncValidate = values => {
   )
 }
 
-const ProductInventoryForm = ({
-  handleSubmit,
-  pristine,
-  reset,
-  submitting,
-  initialValues,
-  settings,
-}) => {
+interface props {
+  handleSubmit
+  pristine
+  reset
+  submitting
+  settings
+}
+
+const ProductInventoryForm = (props: props) => {
+  const { handleSubmit, pristine, reset, submitting, settings } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={4}>
         <div className={style.innerBox}>
           <div className="row" style={{ marginBottom: 50 }}>
             <div className="col-xs-5">

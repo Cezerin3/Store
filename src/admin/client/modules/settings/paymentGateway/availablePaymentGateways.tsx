@@ -1,4 +1,4 @@
-export const AVAILABLE_PAYMENT_GATEWAYS = [
+export const availablePaymentGateways = [
   {
     key: "paypal-checkout",
     name: "PayPal Express Checkout",

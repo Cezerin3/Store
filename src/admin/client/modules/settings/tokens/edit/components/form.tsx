@@ -1,15 +1,12 @@
+import { Paper } from "@material-ui/core"
+import RaisedButton from "material-ui/RaisedButton"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
-
-import messages from "lib/text"
-import style from "./style.css"
-import ConfirmationDialog from "modules/shared/confirmation"
-import { MultiSelect } from "modules/shared/form"
-
-import Paper from "material-ui/Paper"
-import Divider from "material-ui/Divider"
-import RaisedButton from "material-ui/RaisedButton"
+import { messages } from "../../../../../lib"
+import ConfirmationDialog from "../../../../shared/confirmation"
+import { MultiSelect } from "../../../../shared/form"
+import style from "./style.module.sass"
 
 const Scopes = [
   "admin",
@@ -87,7 +84,7 @@ class EditTokenForm extends React.Component {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Paper className="paper-box" zDepth={1}>
+          <Paper className="paper-box" elevation={4}>
             <div className={style.innerBox}>
               <Field
                 name="name"

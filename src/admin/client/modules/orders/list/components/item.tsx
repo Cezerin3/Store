@@ -1,13 +1,12 @@
+import { Divider } from "@material-ui/core"
+import Checkbox from "material-ui/Checkbox"
+import FontIcon from "material-ui/FontIcon"
+import { ListItem } from "material-ui/List"
+import moment from "moment"
 import React from "react"
 import { Link } from "react-router-dom"
-import Checkbox from "material-ui/Checkbox"
-import { ListItem } from "material-ui/List"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
-import messages from "lib/text"
-import * as helper from "lib/helper"
-import style from "./style.css"
-import moment from "moment"
+import { helper, messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 const getOrderStateIcons = order => {
   let icons = []

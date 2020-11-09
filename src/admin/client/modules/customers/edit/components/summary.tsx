@@ -1,24 +1,12 @@
+import { Paper } from "@material-ui/core"
+import Dialog from "material-ui/Dialog"
+import RaisedButton from "material-ui/RaisedButton"
 import React from "react"
-import { Link } from "react-router-dom"
-import moment from "moment"
-
-import messages from "lib/text"
-import * as helper from "lib/helper"
-import style from "./style.css"
+import { helper, messages } from "../../../../lib"
+import style from "./style.module.sass"
 import SummaryForm from "./summaryForm"
 
-import Paper from "material-ui/Paper"
-import Divider from "material-ui/Divider"
-import IconButton from "material-ui/IconButton"
-import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
-import FontIcon from "material-ui/FontIcon"
-import IconMenu from "material-ui/IconMenu"
-import MenuItem from "material-ui/MenuItem"
-import SelectField from "material-ui/SelectField"
-import Dialog from "material-ui/Dialog"
-
-export default class CustomerSummary extends React.Component {
+class CustomerSummary extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,7 +32,7 @@ export default class CustomerSummary extends React.Component {
     const totalSpent = helper.formatCurrency(customer.total_spent, settings)
 
     return (
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={1}>
         <div className={style.innerBox}>
           <div
             className={style.customerName}
@@ -114,3 +102,5 @@ export default class CustomerSummary extends React.Component {
     )
   }
 }
+
+export default CustomerSummary

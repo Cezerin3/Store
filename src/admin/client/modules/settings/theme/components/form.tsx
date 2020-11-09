@@ -1,13 +1,9 @@
-import React from "react"
-
-import messages from "lib/text"
-import style from "./style.css"
-import api from "lib/api"
-import ThemeSettings from "modules/settings/themeSettings"
-
-import Paper from "material-ui/Paper"
+import { Divider, Paper } from "@material-ui/core"
 import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
+import React from "react"
+import { messages } from "../../../../lib"
+import ThemeSettings from "../../../settings/themeSettings"
+import style from "./style.module.sass"
 
 const styles = {
   button: {
@@ -25,7 +21,7 @@ const styles = {
   },
 }
 
-export default class Theme extends React.Component {
+class Theme extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -56,7 +52,7 @@ export default class Theme extends React.Component {
 
     return (
       <div>
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={1}>
           <div className={style.innerBox}>
             <div className="row between-xs middle-xs">
               <div className="col-xs-6">
@@ -118,3 +114,5 @@ export default class Theme extends React.Component {
     )
   }
 }
+
+export default Theme

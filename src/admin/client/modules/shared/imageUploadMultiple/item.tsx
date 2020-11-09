@@ -1,13 +1,12 @@
-import React from "react"
-import messages from "lib/text"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
+import React from "react"
+import { messages } from "../../../lib"
+import style from "./style.module.sass"
 
 const GalleryItem = ({ url, alt, id, onDelete, onImageEdit }) => (
-  <Paper zDepth={1} rounded={false}>
+  <Paper elevation={4} rounded={false}>
     <div className={style.preview}>
       <img src={url} title={alt} />
     </div>

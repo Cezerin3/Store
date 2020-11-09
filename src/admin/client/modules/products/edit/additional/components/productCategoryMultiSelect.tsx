@@ -1,13 +1,9 @@
-import React from "react"
-import { Field, FieldArray, reduxForm } from "redux-form"
-import messages from "lib/text"
-import style from "./style.css"
-import CategoryMultiselect from "modules/productCategories/components/multiselectList"
-import FontIcon from "material-ui/FontIcon"
 import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
-const Fragment = React.Fragment
+import FontIcon from "material-ui/FontIcon"
+import CategoryMultiselect from "modules/productCategories/components/multiselectList"
+import React from "react"
+import { messages } from "../../../../../lib"
 
 const CategoryItemActions = ({ fields, index }) => (
   <a
@@ -24,7 +20,7 @@ const CategoryItem = ({ categoryName, actions }) => (
   </span>
 )
 
-export default class ProductCategoryMultiSelect extends React.Component {
+class ProductCategoryMultiSelect extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -126,3 +122,5 @@ export default class ProductCategoryMultiSelect extends React.Component {
     )
   }
 }
+
+export default ProductCategoryMultiSelect

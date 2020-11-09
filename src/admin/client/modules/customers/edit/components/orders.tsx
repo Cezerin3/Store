@@ -1,16 +1,12 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import moment from "moment"
-
-import api from "lib/api"
-import messages from "lib/text"
-import * as helper from "lib/helper"
-import style from "./style.css"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
 import Divider from "material-ui/Divider"
 import FontIcon from "material-ui/FontIcon"
 import { List, ListItem } from "material-ui/List"
+import moment from "moment"
+import React from "react"
+import { Link } from "react-router-dom"
+import { api, helper, messages } from "../../../../lib"
+import style from "./style.module.sass"
 
 const getOrderStates = order => {
   let states = []
@@ -100,7 +96,7 @@ const CustomerOrder = ({ order, settings }) => {
   )
 }
 
-export default class CustomerOrders extends React.Component {
+class CustomerOrders extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -128,7 +124,7 @@ export default class CustomerOrders extends React.Component {
     }
 
     return (
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={1}>
         <div
           className="blue-title"
           style={{ paddingLeft: 16, paddingBottom: 16 }}
@@ -140,3 +136,5 @@ export default class CustomerOrders extends React.Component {
     )
   }
 }
+
+export default CustomerOrders

@@ -1,16 +1,12 @@
-import React from "react"
-import { Link } from "react-router-dom"
-
-import messages from "lib/text"
-import * as helper from "lib/helper"
-import style from "./style.css"
-import ShippingAddressForm from "./shippingAddressForm"
-
-import Paper from "material-ui/Paper"
-import Divider from "material-ui/Divider"
+import { Divider, Paper } from "@material-ui/core"
+import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
 import RaisedButton from "material-ui/RaisedButton"
-import Dialog from "material-ui/Dialog"
+import React from "react"
+import { Link } from "react-router-dom"
+import { helper, messages } from "../../../../lib"
+import ShippingAddressForm from "./shippingAddressForm"
+import style from "./style.module.sass"
 
 const getShippingFieldLabel = ({ label, key }) => {
   return label && label.length > 0 ? label : helper.getOrderFieldLabelByKey(key)
@@ -137,7 +133,7 @@ const BillingAddress = ({ address, settings }) => {
   }
 }
 
-export default class OrderCustomer extends React.Component {
+class OrderCustomer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -241,3 +237,5 @@ export default class OrderCustomer extends React.Component {
     )
   }
 }
+
+export default OrderCustomer

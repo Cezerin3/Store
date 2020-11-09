@@ -1,16 +1,13 @@
+import { Paper } from "@material-ui/core"
+import RaisedButton from "material-ui/RaisedButton"
+import { CustomToggle, MultiSelect } from "modules/shared/form"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
+import { messages } from "../../../../../lib"
+import style from "./style.module.sass"
 
-import messages from "lib/text"
-import style from "./style.css"
-import { CustomToggle, MultiSelect } from "modules/shared/form"
-
-import Paper from "material-ui/Paper"
-import Divider from "material-ui/Divider"
-import RaisedButton from "material-ui/RaisedButton"
-
-const WEBHOOK_EVENTS = [
+const webhookEvents = [
   "order.created",
   "order.updated",
   "order.deleted",
@@ -45,38 +42,32 @@ class EditWebhookForm extends React.Component {
   }
 
   render() {
-    let {
-      handleSubmit,
-      pristine,
-      submitting,
-      initialValues,
-      webhookId,
-    } = this.props
+    let { handleSubmit, pristine, submitting, webhookId } = this.props
     const isAdd = webhookId === null || webhookId === undefined
 
     return (
-      <div>
+      <>
         <form onSubmit={handleSubmit}>
-          <Paper className="paper-box" zDepth={1}>
+          <Paper className="paper-box" elevation={4}>
             <div className={style.innerBox}>
               <Field
                 name="description"
                 component={TextField}
                 floatingLabelText={messages.description}
-                fullWidth={true}
-                multiLine={true}
+                fullWidth
+                multiLine
               />
               <Field
                 name="url"
                 component={TextField}
                 floatingLabelText="URL"
-                fullWidth={true}
+                fullWidth
               />
               <Field
                 name="secret"
                 component={TextField}
                 floatingLabelText={messages.webhookSecret}
-                fullWidth={true}
+                fullWidth
               />
               <div style={{ maxWidth: 256 }}>
                 <Field
@@ -90,7 +81,7 @@ class EditWebhookForm extends React.Component {
               <Field
                 name="events"
                 component={MultiSelect}
-                items={WEBHOOK_EVENTS}
+                items={webhookEvents}
                 columns={3}
               />
             </div>
@@ -105,14 +96,14 @@ class EditWebhookForm extends React.Component {
               <RaisedButton
                 type="submit"
                 label={isAdd ? messages.add : messages.save}
-                primary={true}
+                primary
                 className={style.button}
                 disabled={pristine || submitting}
               />
             </div>
           </Paper>
         </form>
-      </div>
+      </>
     )
   }
 }

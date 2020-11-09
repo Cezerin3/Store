@@ -1,6 +1,5 @@
+import { api } from "../../lib"
 import * as t from "./actionTypes"
-import api from "lib/api"
-import messages from "lib/text"
 const push = () => {}
 
 function requestCustomer() {

@@ -1,20 +1,20 @@
-import React from "react"
-
-import messages from "lib/text"
-import style from "./style.css"
-import DynamicEditControl from "./dynamicEditControl"
-
-import Paper from "material-ui/Paper"
+import { Paper } from "@material-ui/core"
 import FlatButton from "material-ui/FlatButton"
-import FontIcon from "material-ui/FontIcon"
 import FloatingActionButton from "material-ui/FloatingActionButton"
+import FontIcon from "material-ui/FontIcon"
+import React from "react"
+import { messages } from "../../../../lib"
+import DynamicEditControl from "./dynamicEditControl"
+import style from "./style.module.sass"
 
-const ArrayEditor = ({
-  label,
-  properties,
-  fields,
-  meta: { touched, error, submitFailed },
-}) => {
+interface props {
+  label
+  properties
+  fields
+}
+
+const ArrayEditor = (props: props) => {
+  const { label, properties, fields } = props
   return (
     <div>
       <div className={style.arrayTitle}>
@@ -34,7 +34,7 @@ const ArrayEditor = ({
           <li key={index}>
             <Paper
               style={{ margin: "20px 0 20px 20px", backgroundColor: "#f7f7f7" }}
-              zDepth={1}
+              elevation={4}
             >
               <div className={style.arrayItemHead}>
                 <FlatButton

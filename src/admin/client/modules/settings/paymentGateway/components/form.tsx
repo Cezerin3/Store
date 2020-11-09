@@ -1,15 +1,12 @@
-import React from "react"
-import { Field, reduxForm } from "redux-form"
-import { TextField, SelectField } from "redux-form-material-ui"
-
-import GatewaySettings from "./gatewaySettings"
-import { AVAILABLE_PAYMENT_GATEWAYS } from "../availablePaymentGateways"
-import messages from "lib/text"
-import style from "./style.css"
-
 import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
 import RaisedButton from "material-ui/RaisedButton"
+import React from "react"
+import { reduxForm } from "redux-form"
+import { messages } from "../../../../lib"
+import { availablePaymentGateways } from "../availablePaymentGateways"
+import GatewaySettings from "./gatewaySettings"
+import style from "./style.module.sass"
 
 class EditPaymentGatewayForm extends React.Component {
   constructor(props) {
@@ -39,7 +36,7 @@ class EditPaymentGatewayForm extends React.Component {
 
   render() {
     let { handleSubmit, pristine, submitting, initialValues } = this.props
-    const gatewayDetails = AVAILABLE_PAYMENT_GATEWAYS.find(
+    const gatewayDetails = availablePaymentGateways.find(
       item => item.key === this.props.gateway
     )
 

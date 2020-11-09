@@ -1,8 +1,8 @@
 import React from "react"
-import api from "lib/api"
-import ImageUpload from "modules/shared/imageUpload"
+import { api } from "../../../../lib"
+import ImageUpload from "../../../shared/imageUpload"
 
-export default class ThemeImageUpload extends React.Component {
+class ThemeImageUpload extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -41,3 +41,5 @@ export default class ThemeImageUpload extends React.Component {
     )
   }
 }
+
+export default ThemeImageUpload

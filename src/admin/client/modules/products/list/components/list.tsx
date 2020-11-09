@@ -1,14 +1,14 @@
-import React from "react"
+import { Divider } from "@material-ui/core"
+import FontIcon from "material-ui/FontIcon"
 import { List } from "material-ui/List"
-import Divider from "material-ui/Divider"
+import RaisedButton from "material-ui/RaisedButton"
+import React from "react"
+import { messages } from "../../../../lib"
 import Head from "./head"
 import ProductsListItem from "./item"
-import RaisedButton from "material-ui/RaisedButton"
-import FontIcon from "material-ui/FontIcon"
-import messages from "lib/text"
-import style from "./style.css"
+import style from "./style.module.sass"
 
-export default class ProductsList extends React.Component {
+class ProductsList extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -65,3 +65,5 @@ export default class ProductsList extends React.Component {
     )
   }
 }
+
+export default ProductsList
