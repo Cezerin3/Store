@@ -1,5 +1,4 @@
-import { Paper } from "@material-ui/core"
-import Divider from "material-ui/Divider"
+import { Divider, Paper } from "@material-ui/core"
 import FontIcon from "material-ui/FontIcon"
 import { List, ListItem } from "material-ui/List"
 import moment from "moment"
@@ -124,7 +123,7 @@ class CustomerOrders extends React.Component {
     }
 
     return (
-      <Paper className="paper-box" elevation={1}>
+      <Paper className="paper-box" elevation={4}>
         <div
           className="blue-title"
           style={{ paddingLeft: 16, paddingBottom: 16 }}
