@@ -1,14 +1,13 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
-import messages from "lib/text"
-
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
+import { Divider } from "@material-ui/core"
+import AppBar from "material-ui/AppBar"
 import Drawer from "material-ui/Drawer"
+import FontIcon from "material-ui/FontIcon"
+import IconButton from "material-ui/IconButton"
 import Menu from "material-ui/Menu"
 import MenuItem from "material-ui/MenuItem"
-import AppBar from "material-ui/AppBar"
-import IconButton from "material-ui/IconButton"
+import React from "react"
+import { NavLink } from "react-router-dom"
+import { messages } from "../../../lib"
 
 const menuItems = [
   {
