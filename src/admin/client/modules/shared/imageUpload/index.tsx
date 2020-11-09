@@ -1,10 +1,10 @@
 import { Paper } from "@material-ui/core"
-import { messages } from "lib/text"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
 import Snackbar from "material-ui/Snackbar"
 import React from "react"
 import Dropzone from "react-dropzone"
+import { messages } from "../../../lib"
 import style from "./style.module.sass"
 
 class ImageUpload extends React.Component {
