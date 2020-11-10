@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
+const Dotenv = require("dotenv-webpack")
 
 module.exports = {
   devtool: "source-map",
@@ -179,6 +180,7 @@ module.exports = {
         path.resolve("public/admin-assets/css/bundle-*.css"),
       ],
     }),
+    new Dotenv(),
     // new ForkTsCheckerWebpackPlugin({
     //   async: true,
     //   typescript: {

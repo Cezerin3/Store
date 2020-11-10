@@ -1,17 +1,15 @@
-import React from "react"
+import { Divider } from "@material-ui/core"
 import messages from "lib/text"
-import ConfirmationDialog from "modules/shared/confirmation"
-import ProductSearchDialog from "modules/shared/productSearch"
-import DeleteConfirmation from "modules/shared/deleteConfirmation"
 import FontIcon from "material-ui/FontIcon"
-import IconMenu from "material-ui/IconMenu"
 import IconButton from "material-ui/IconButton"
+import IconMenu from "material-ui/IconMenu"
 import MenuItem from "material-ui/MenuItem"
-import FlatButton from "material-ui/FlatButton"
-import RaisedButton from "material-ui/RaisedButton"
-import Divider from "material-ui/Divider"
+import React from "react"
+import ConfirmationDialog from "../../../shared/confirmation"
+import DeleteConfirmation from "../../../shared/deleteConfirmation"
+import ProductSearchDialog from "../../../shared/productSearch"
 
-export default class Buttons extends React.Component {
+class Buttons extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -200,3 +198,5 @@ export default class Buttons extends React.Component {
     }
   }
 }
+
+export default Buttons

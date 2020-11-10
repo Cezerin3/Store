@@ -8,12 +8,12 @@ import IconButton from "material-ui/IconButton"
 import IconMenu from "material-ui/IconMenu"
 import MenuItem from "material-ui/MenuItem"
 import RaisedButton from "material-ui/RaisedButton"
-import ProductSearchDialog from "modules/shared/productSearch"
 import React from "react"
 import { Link } from "react-router-dom"
 import TagsInput from "react-tagsinput"
 import { Field, FieldArray, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
+import ProductSearchDialog from "../../../../shared/productSearch"
 import ProductCategoryMultiSelect from "./productCategoryMultiSelect"
 import ProductCategorySelect from "./productCategorySelect"
 import style from "./style.module.sass"
@@ -178,11 +178,7 @@ class ProductsArray extends React.Component {
   }
 
   render() {
-    const {
-      settings,
-      fields,
-      meta: { touched, error, submitFailed },
-    } = this.props
+    const { settings, fields } = this.props
     const { products } = this.state
 
     return (

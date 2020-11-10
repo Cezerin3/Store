@@ -1,4 +1,4 @@
-var APPLICATION_DATA_TIMEZONES = {
+const timezones = {
   "Africa/Abidjan": { utc: "+0000", utc_dst: "+0000", utc_v: 0, utc_dst_v: 0 },
   "Africa/Accra": { utc: "+0000", utc_dst: "+0000", utc_v: 0, utc_dst_v: 0 },
   "Africa/Addis_Ababa": {
@@ -2002,3 +2002,5 @@ var APPLICATION_DATA_TIMEZONES = {
   "W-SU": { utc: "+0400", utc_dst: "+0400", utc_v: 4, utc_dst_v: 4 },
   Zulu: { utc: "+0000", utc_dst: "+0000", utc_v: 0, utc_dst_v: 0 },
 }
+
+export default timezones

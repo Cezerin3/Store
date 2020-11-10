@@ -5,9 +5,9 @@ import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
 import IconMenu from "material-ui/IconMenu"
 import MenuItem from "material-ui/MenuItem"
-import DeleteConfirmation from "modules/shared/deleteConfirmation"
 import moment from "moment"
-import React from "react"
+import React, { useEffect } from "react"
+import DeleteConfirmation from "../../../shared/deleteConfirmation"
 import FileUploader from "./fileUploader"
 import style from "./style.module.sass"
 
@@ -78,41 +78,31 @@ class FileItem extends React.Component {
   }
 }
 
-class FileList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+const FileList = props => {
+  const { files, settings, onDelete, onUpload, uploading } = props
 
-  componentDidMount() {
-    this.props.onLoad()
-  }
+  useEffect(() => {
+    props.onLoad()
+  }, [])
 
-  render() {
-    const { files, settings, onDelete, onUpload, uploading } = this.props
-    let listItems = files.map((file, index) => (
-      <FileItem
-        key={index}
-        file={file}
-        settings={settings}
-        onDelete={onDelete}
-      />
-    ))
+  let listItems = files.map((file, index) => (
+    <FileItem key={index} file={file} settings={settings} onDelete={onDelete} />
+  ))
 
-    return (
-      <>
-        <div className={style.head + " row row--no-gutter"}>
-          <div className="col-xs-5">{messages.fileName}</div>
-          <div className="col-xs-3">{messages.fileModified}</div>
-          <div className="col-xs-2">{messages.fileSize}</div>
-          <div className="col-xs-2" />
-        </div>
-        <Paper className="paper-box" elevation={4}>
-          {listItems}
-        </Paper>
-        <FileUploader onUpload={onUpload} uploading={uploading} />
-      </>
-    )
-  }
+  return (
+    <>
+      <div className={style.head + " row row--no-gutter"}>
+        <div className="col-xs-5">{messages.fileName}</div>
+        <div className="col-xs-3">{messages.fileModified}</div>
+        <div className="col-xs-2">{messages.fileSize}</div>
+        <div className="col-xs-2" />
+      </div>
+      <Paper className="paper-box" elevation={4}>
+        {listItems}
+      </Paper>
+      <FileUploader onUpload={onUpload} uploading={uploading} />
+    </>
+  )
 }
 
 export default FileList

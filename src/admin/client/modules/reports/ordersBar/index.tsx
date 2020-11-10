@@ -1,24 +1,25 @@
 import api from "lib/api"
 import messages from "lib/text"
 import moment from "moment"
-import React from "react"
+import React, { FC, useEffect, useState } from "react"
 import BarChart from "./barChart"
 import * as utils from "./utils"
 
-class OrdersBar extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      ordersData: null,
-      salesData: null,
-    }
-  }
+interface reportData {
+  labels: any
+  datasets: {
+    label: any
+    data: any
+    backgroundColor: string
+    hoverBackgroundColor: any
+  }[]
+}
 
-  componentDidMount() {
-    this.fetchData()
-  }
+const OrdersBar: FC = () => {
+  const [ordersData, setOrdersData] = useState<reportData>(null)
+  const [salesData, setSalesData] = useState<reportData>(null)
 
-  fetchData = () => {
+  const fetchData = async () => {
     const filter = {
       draft: false,
       cancelled: false,
@@ -29,37 +30,39 @@ class OrdersBar extends React.Component {
         .second(0)
         .toISOString(),
     }
-
-    api.orders
-      .list(filter)
-      .then(({ status, json }) => {
-        const reportData = utils.getReportDataFromOrders(json)
-        const ordersData = utils.getOrdersDataFromReportData(reportData)
-        const salesData = utils.getSalesDataFromReportData(reportData)
-        this.setState({ ordersData, salesData })
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    try {
+      const { json } = await api.orders.list(filter)
+      const reportData = utils.getReportDataFromOrders(json)
+      const getOrdersData = utils.getOrdersDataFromReportData(reportData)
+      const getSalesData = utils.getSalesDataFromReportData(reportData)
+      setOrdersData(getOrdersData)
+      setSalesData(getSalesData)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
-  render() {
-    const { ordersData, salesData } = this.state
-    return (
-      <div>
-        <BarChart
-          data={ordersData}
-          legendDisplay
-          title={messages.drawer_orders}
-        />
-        <BarChart
-          data={salesData}
-          legendDisplay={false}
-          title={messages.salesReport}
-        />
-      </div>
-    )
-  }
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  console.log("OrdersData: " + ordersData.datasets)
+  console.log("SalesData: " + salesData.datasets)
+
+  return (
+    <>
+      <BarChart
+        data={ordersData}
+        legendDisplay
+        title={messages.drawer_orders}
+      />
+      <BarChart
+        data={salesData}
+        legendDisplay={false}
+        title={messages.salesReport}
+      />
+    </>
+  )
 }
 
 export default OrdersBar

@@ -1,8 +1,8 @@
+import { Add, Delete } from "@material-ui/icons"
 import messages from "lib/text"
-import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
-import DeleteConfirmation from "modules/shared/deleteConfirmation"
 import React from "react"
+import DeleteConfirmation from "../../../shared/deleteConfirmation"
 import Search from "./search"
 
 class Buttons extends React.Component {
@@ -40,9 +40,7 @@ class Buttons extends React.Component {
               tooltip={messages.actions_delete}
               onClick={this.openDelete}
             >
-              <FontIcon color="#fff" className="material-icons">
-                delete
-              </FontIcon>
+              <Delete htmlColor="#fff" />
             </IconButton>
             <DeleteConfirmation
               open={this.state.openDelete}
@@ -59,9 +57,7 @@ class Buttons extends React.Component {
           tooltip={messages.orders_titleAdd}
           onClick={onCreate}
         >
-          <FontIcon color="#fff" className="material-icons">
-            add
-          </FontIcon>
+          <Add htmlColor="#fff" />
         </IconButton>
       </>
     )

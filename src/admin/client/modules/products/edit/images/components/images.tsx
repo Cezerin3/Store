@@ -1,12 +1,12 @@
-import React from "react"
+import { Paper } from "@material-ui/core"
 import messages from "lib/text"
-import Gallery from "modules/shared/imageUploadMultiple"
-import Paper from "material-ui/Paper"
-import TextField from "material-ui/TextField"
 import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
+import TextField from "material-ui/TextField"
+import React from "react"
+import Gallery from "../../../../shared/imageUploadMultiple"
 
-export default class ProductImages extends React.Component {
+class ProductImages extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -67,7 +67,7 @@ export default class ProductImages extends React.Component {
     ]
 
     return (
-      <Paper className="paper-box" zDepth={1}>
+      <Paper className="paper-box" elevation={4}>
         <div style={{ padding: "10px 10px 30px 10px" }}>
           <Gallery
             productId={productId}
@@ -99,3 +99,5 @@ export default class ProductImages extends React.Component {
     )
   }
 }
+
+export default ProductImages

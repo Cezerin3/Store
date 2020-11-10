@@ -1,37 +1,46 @@
+import messages from "lib/text"
+import AppBar from "material-ui/AppBar"
+import FontIcon from "material-ui/FontIcon"
+import IconButton from "material-ui/IconButton"
 import React from "react"
 import { Link } from "react-router-dom"
-
-import messages from "lib/text"
-import ProductCategoryHead from "modules/productCategories/head/index"
-import CustomerGroupHead from "modules/customerGroups/head/index"
-import CustomersHead from "modules/customers/listHead/index"
-import CustomerHead from "modules/customers/editHead/index"
-import ProductsHead from "modules/products/listHead/index"
-import ProductHead from "modules/products/editHead/index"
-import OrdersHead from "modules/orders/listHead/index"
-import OrderHead from "modules/orders/editHead/index"
-import OrderStatusHead from "modules/orderStatuses/head/index"
-import PaymentMethodHead from "modules/settings/paymentsEdit/head"
-import PaymentMethodListHead from "modules/settings/payments/head"
-import ShippingMethodHead from "modules/settings/shippingEdit/head"
-import ShippingMethodListHead from "modules/settings/shipping/head"
-import PageHead from "modules/pages/edit/head"
-import PageListHead from "modules/pages/list/head"
-import TokenListHead from "modules/settings/tokens/list/head"
-import RedirectsListHead from "modules/settings/redirects/list/head"
-import RedirectsEditHead from "modules/settings/redirects/edit/head"
-import WebhooksListHead from "modules/settings/webhooks/list/head"
-import WebhooksEditHead from "modules/settings/webhooks/edit/head"
-import AppsHead from "modules/apps/head"
-import FileListHead from "modules/files/list/head"
-
-import FontIcon from "material-ui/FontIcon"
-import AppBar from "material-ui/AppBar"
-import IconButton from "material-ui/IconButton"
+import AppsHead from "../../apps/head"
+import CustomerGroupHead from "../../customerGroups/head/index"
+import CustomerHead from "../../customers/editHead/index"
+import CustomersHead from "../../customers/listHead/index"
+import FileListHead from "../../files/list/head"
+import OrderHead from "../../orders/editHead/index"
+import OrdersHead from "../../orders/listHead/index"
+import OrderStatusHead from "../../orderStatuses/head/index"
+import PageHead from "../../pages/edit/head"
+import PageListHead from "../../pages/list/head"
+import ProductCategoryHead from "../../productCategories/head/index"
+import ProductHead from "../../products/editHead/index"
+import ProductsHead from "../../products/listHead/index"
+import PaymentMethodListHead from "../../settings/payments/head"
+import PaymentMethodHead from "../../settings/paymentsEdit/head"
+import RedirectsEditHead from "../../settings/redirects/edit/head"
+import RedirectsListHead from "../../settings/redirects/list/head"
+import ShippingMethodListHead from "../../settings/shipping/head"
+import ShippingMethodHead from "../../settings/shippingEdit/head"
+import TokenListHead from "../../settings/tokens/list/head"
+import WebhooksEditHead from "../../settings/webhooks/edit/head"
+import WebhooksListHead from "../../settings/webhooks/list/head"
 import DrawerMenu from "./drawer"
 
-export default class AppBarTop extends React.Component {
-  constructor(props) {
+interface props {
+  location
+  productCategoryName
+  productsSelectedCount
+  customersSelectedCount
+  customerGroupName
+  ordersSelectedCount
+  orderStatusName
+  orderNumber
+}
+
+class AppBarTop extends React.Component {
+  constructor(props: props) {
     super(props)
     this.state = { open: false }
   }
@@ -692,3 +701,5 @@ export default class AppBarTop extends React.Component {
     )
   }
 }
+
+export default AppBarTop

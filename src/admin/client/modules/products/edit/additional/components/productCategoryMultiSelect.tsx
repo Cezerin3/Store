@@ -1,9 +1,9 @@
 import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
 import FontIcon from "material-ui/FontIcon"
-import CategoryMultiselect from "modules/productCategories/components/multiselectList"
 import React from "react"
 import { messages } from "../../../../../lib"
+import CategoryMultiselect from "../../../../productCategories/components/multiselectList"
 
 const CategoryItemActions = ({ fields, index }) => (
   <a

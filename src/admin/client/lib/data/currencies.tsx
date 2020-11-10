@@ -1,4 +1,4 @@
-var APPLICATION_DATA_CURRENCIES = {
+const currencies = {
   AED: "United Arab Emirates Dirham",
   AFN: "Afghan Afghani",
   ALL: "Albanian Lek",
@@ -172,3 +172,5 @@ var APPLICATION_DATA_CURRENCIES = {
   ZMW: "Zambian Kwacha",
   ZWL: "Zimbabwean Dollar",
 }
+
+export default currencies

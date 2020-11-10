@@ -3,9 +3,9 @@ import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
-import CategorySelect from "modules/productCategories/select"
-import DeleteConfirmation from "modules/shared/deleteConfirmation"
 import React from "react"
+import CategorySelect from "../../../productCategories/select"
+import DeleteConfirmation from "../../../shared/deleteConfirmation"
 
 class Buttons extends React.Component {
   constructor(props) {

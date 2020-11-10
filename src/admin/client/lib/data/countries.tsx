@@ -1,4 +1,4 @@
-var APPLICATION_DATA_COUNTRIES = {
+const countries = {
   AF: "Afghanistan",
   AX: "\u00c5land Islands",
   AL: "Albania",
@@ -253,3 +253,5 @@ var APPLICATION_DATA_COUNTRIES = {
   ZM: "Zambia",
   ZW: "Zimbabwe",
 }
+
+export default countries

@@ -1,11 +1,10 @@
-import { Paper } from "@material-ui/core"
-import Divider from "material-ui/Divider"
+import { Divider, Paper } from "@material-ui/core"
 import RaisedButton from "material-ui/RaisedButton"
-import { CustomToggle } from "modules/shared/form"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
 import { messages } from "../../../../lib"
+import { CustomToggle } from "../../../shared/form"
 import style from "./style.module.sass"
 
 interface props {
