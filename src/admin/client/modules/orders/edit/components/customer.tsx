@@ -167,7 +167,7 @@ class OrderCustomer extends React.Component {
         <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
           {messages.customer}
         </div>
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           <div className={style.innerBox}>
             <div className={style.address}>
               <div>
