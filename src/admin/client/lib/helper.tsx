@@ -1,8 +1,15 @@
 import messages from "./text"
 
-export const formatNumber = (number, settings) => {
+interface settings {
+  currency_format: string
+  decimal_number: number
+  decimal_separator: string
+  thousand_separator: string
+}
+
+export const formatNumber = (number: string, settings: settings) => {
   const x = 3
-  const floatNumber = parseFloat(number || 0) || 0
+  const floatNumber = parseFloat(number || "0") || 0
 
   const re =
     "\\d(?=(\\d{" +
@@ -11,7 +18,7 @@ export const formatNumber = (number, settings) => {
     (settings.decimal_number > 0 ? "\\D" : "$") +
     ")"
 
-  let num = floatNumber.toFixed(Math.max(0, ~~settings.decimal_number))
+  const num = floatNumber.toFixed(Math.max(0, ~~settings.decimal_number))
 
   return (settings.decimal_separator
     ? num.replace(".", settings.decimal_separator)
@@ -20,10 +27,10 @@ export const formatNumber = (number, settings) => {
 }
 
 const amountPattern = "{amount}"
-export const formatCurrency = (number = 0, settings) => {
+export const formatCurrency = (number = 0, settings: settings) => {
   return settings.currency_format.replace(
     amountPattern,
-    formatNumber(number, settings)
+    formatNumber(number.toString(), settings)
   )
 }
 
@@ -32,7 +39,7 @@ export const formatFileSize = (bytes = 0) => {
   if (bytes === 0) {
     return "n/a"
   } else {
-    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10)
+    const i = Math.floor(Math.log(bytes) / Math.log(1024))
     if (i === 0) {
       return `${bytes} ${sizes[i]}`
     } else {
@@ -41,7 +48,7 @@ export const formatFileSize = (bytes = 0) => {
   }
 }
 
-export const getThumbnailUrl = (originalUrl, width) => {
+export const getThumbnailUrl = (originalUrl: string, width: number) => {
   if (originalUrl && originalUrl.length > 0) {
     const pos = originalUrl.lastIndexOf("/")
     const thumbnailUrl =
@@ -54,10 +61,10 @@ export const getThumbnailUrl = (originalUrl, width) => {
   }
 }
 
-export const getOrderFieldLabelByKey = key => {
+export const getOrderFieldLabelByKey = (key: string) => {
   switch (key) {
     case "full_name":
-      return messages.full_name
+      return messages.fullName
     case "address1":
       return messages.address1
     case "address2":

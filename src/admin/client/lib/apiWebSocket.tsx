@@ -3,12 +3,12 @@ import messages from "lib/text"
 import { fetchOrders } from "modules/orders/actions"
 import { installReceive } from "modules/settings/actions"
 
-const AUTO_RECONNECT_INTERVAL = 1000 //1 seconds
+const autoReconnectInterval = 1000 //1 seconds
 const orderCreated = "order.created"
 const themeInstalled = "theme.installed"
 let store = null
 
-export const connectToWebSocket = reduxStore => {
+export const connectToWebSocket = (reduxStore: any) => {
   store = reduxStore
   connect()
 }
@@ -33,7 +33,7 @@ const getWebSocketUrlFromCurrentLocation = () => {
   return `${wsProtocol}//${window.location.host}`
 }
 
-const onMessage = event => {
+const onMessage = (event: { data: string }) => {
   try {
     const message = JSON.parse(event.data)
     eventHandler(message)
@@ -56,11 +56,15 @@ const onClose = event => {
     // try to reconnect
     setTimeout(() => {
       connect()
-    }, AUTO_RECONNECT_INTERVAL)
+    }, autoReconnectInterval)
   }
 }
 
-const showNotification = (title, body, requireInteraction = false) => {
+const showNotification = (
+  title: string,
+  body: string,
+  requireInteraction = false
+) => {
   let msg = new Notification(title, {
     body: body,
     tag: "dashboard",
