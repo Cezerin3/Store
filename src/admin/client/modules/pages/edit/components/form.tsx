@@ -55,6 +55,14 @@ const asyncValidate = (values /*, dispatch */) => {
   })
 }
 
+interface props {
+  handleSubmit
+  pristine
+  submitting
+  initialValues
+  pageId
+}
+
 class EditPageForm extends React.Component {
   constructor(props) {
     super(props)
@@ -81,7 +89,7 @@ class EditPageForm extends React.Component {
     if (initialValues) {
       return (
         <form onSubmit={handleSubmit}>
-          <Paper className="paper-box" zDepth={1}>
+          <Paper className="paper-box" elevation={4}>
             <div className={style.innerBox}>
               <Field
                 name="meta_title"
