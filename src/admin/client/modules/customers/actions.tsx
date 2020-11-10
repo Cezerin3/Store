@@ -119,7 +119,7 @@ const getFilter = (state, offset = 0) => {
 }
 
 export function fetchCustomers() {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const state = getState()
     if (!state.customers.loadingItems) {
       dispatch(requestCustomers())
@@ -127,14 +127,13 @@ export function fetchCustomers() {
 
       let filter = getFilter(state)
 
-      return api.customers
-        .list(filter)
-        .then(({ status, json }) => {
-          dispatch(receiveCustomers(json))
-        })
-        .catch(error => {
-          dispatch(receiveCustomersError(error))
-        })
+      try {
+        const { json } = await api.customers.list(filter)
+        dispatch(receiveCustomers(json))
+      } catch (error) {
+        console.error(error)
+        dispatch(receiveCustomersError(error))
+      }
     }
   }
 }
