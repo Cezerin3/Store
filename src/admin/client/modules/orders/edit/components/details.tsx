@@ -6,6 +6,17 @@ import style from "./style.module.sass"
 import OrderSummary from "./summary"
 import OrderTotals from "./totals"
 
+interface props {
+  order
+  settings
+  onItemDelete
+  onItemUpdate
+  onShippingAddressUpdate
+  onOrderSummaryUpdate
+  onCheckout
+  processingCheckout
+}
+
 class OrderDetails extends React.Component {
   constructor(props) {
     super(props)
@@ -49,7 +60,7 @@ class OrderDetails extends React.Component {
           />
         </div>
         <div className="col-xs-12 col-sm-7 col-md-8 col--no-gutter scroll col-full-height">
-          <Paper className="paper-box" zDepth={1}>
+          <Paper className="paper-box" elevation={4}>
             <OrderItems
               order={order}
               settings={settings}
