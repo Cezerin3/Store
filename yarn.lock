@@ -8576,9 +8576,9 @@ rc-tooltip@^5.0.1:
     rc-trigger "^5.0.0"
 
 rc-trigger@^5.0.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/rc-trigger/-/rc-trigger-5.1.1.tgz#5e70e3a2ba797cd443e17367b8e26cf578c0ad38"
-  integrity sha512-/xQq/iT6M4wE1Az2UG0/sqk2jlZ7+YP7Gqa2FbwqFi3UPNOCFvsCCRZ6lRRWGuaNjfUpinvjK8X22P9t6Pr6hA==
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/rc-trigger/-/rc-trigger-5.1.2.tgz#f0f89bba2318699e704492bddb20506ecd8f8916"
+  integrity sha512-A6UdDy95masAEIaNmazPtqHW1EOFDWi2C2bJGDpr9OYpmObDpWKdxyNijVbFb6l1viTkAU9d3FyStgNPddgFzw==
   dependencies:
     "@babel/runtime" "^7.11.2"
     classnames "^2.2.6"
