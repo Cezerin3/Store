@@ -4,7 +4,7 @@ import RaisedButton from "material-ui/RaisedButton"
 import React from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
-import { messages } from "../../../../../lib"
+import { api, messages } from "../../../../../lib"
 import Editor from "../../../../shared/editor"
 import style from "./style.module.sass"
 
@@ -33,7 +33,7 @@ const slugExists = values => {
 
 const asyncValidate = values => {
   return Promise.all([slugExists(values)]).then(([isSlugExists]) => {
-    let errors = {}
+    let errors: { slug?: string } = {}
 
     if (isSlugExists) {
       errors.slug = messages.errors_urlTaken
