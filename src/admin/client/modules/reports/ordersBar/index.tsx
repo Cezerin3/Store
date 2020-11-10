@@ -46,9 +46,6 @@ const OrdersBar: FC = () => {
     fetchData()
   }, [])
 
-  console.log("OrdersData: " + ordersData.datasets)
-  console.log("SalesData: " + salesData.datasets)
-
   return (
     <>
       <BarChart

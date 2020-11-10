@@ -32,8 +32,6 @@ const BarChart = (props: props) => {
                     xAxes: [
                       {
                         stacked: true,
-                        barPercentage: 0.99,
-                        categoryPercentage: 0.99,
                         gridLines: {
                           display: false,
                           drawBorder: false,

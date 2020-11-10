@@ -71,12 +71,16 @@ export const getOrdersDataFromReportData = reportData => {
       {
         label: messages.closedAndPaidOrders,
         data: successData,
+        barPercentage: 0.99,
+        categoryPercentage: 0.99,
         backgroundColor: chartColors.blue,
         hoverBackgroundColor: transparentize(chartColors.blue, 0.4),
       },
       {
         label: messages.newOrders,
         data: newData,
+        barPercentage: 0.99,
+        categoryPercentage: 0.99,
         backgroundColor: chartColors.yellow,
         hoverBackgroundColor: transparentize(chartColors.yellow, 0.4),
       },
