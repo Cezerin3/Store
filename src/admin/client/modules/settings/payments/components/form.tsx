@@ -1,22 +1,19 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import Paper from "material-ui/Paper"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
+import { Divider, Paper } from "@material-ui/core"
+import { KeyboardArrowRight } from "@material-ui/icons"
 import { List, ListItem } from "material-ui/List"
+import React, { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const MethodItem = ({ method }) => {
   return (
-    <div>
+    <>
       <Divider />
       <Link
         to={`/admin/settings/payments/${method.id}`}
         style={{ textDecoration: "none" }}
       >
         <ListItem
-          rightIcon={
-            <FontIcon className="material-icons">keyboard_arrow_right</FontIcon>
-          }
+          rightIcon={<KeyboardArrowRight />}
           style={!method.enabled ? { color: "rgba(0, 0, 0, 0.3)" } : {}}
           primaryText={
             <div className="row">
@@ -28,31 +25,33 @@ const MethodItem = ({ method }) => {
           }
         />
       </Link>
-    </div>
+    </>
   )
 }
 
-export default class EmailSettings extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  componentDidMount() {
-    this.props.onLoad()
-  }
-
-  render() {
-    const { paymentMethods } = this.props
-    let methods = paymentMethods.map((method, index) => (
-      <MethodItem key={index} method={method} />
-    ))
-
-    return (
-      <Paper className="paper-box" zDepth={1}>
-        <div style={{ width: "100%" }}>
-          <List style={{ padding: 0 }}>{methods}</List>
-        </div>
-      </Paper>
-    )
-  }
+interface props {
+  paymentMethods
+  onLoad: Function
 }
+
+const EmailSettings = (props: props) => {
+  const { paymentMethods, onLoad } = props
+
+  useEffect(() => {
+    onLoad()
+  }, [])
+
+  let methods = paymentMethods.map((method, index) => (
+    <MethodItem key={index} method={method} />
+  ))
+
+  return (
+    <Paper className="paper-box" elevation={4}>
+      <div style={{ width: "100%" }}>
+        <List style={{ padding: 0 }}>{methods}</List>
+      </div>
+    </Paper>
+  )
+}
+
+export default EmailSettings

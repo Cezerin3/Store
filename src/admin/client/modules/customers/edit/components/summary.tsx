@@ -32,7 +32,7 @@ class CustomerSummary extends React.Component {
     const totalSpent = helper.formatCurrency(customer.total_spent, settings)
 
     return (
-      <Paper className="paper-box" elevation={1}>
+      <Paper className="paper-box" elevation={4}>
         <div className={style.innerBox}>
           <div
             className={style.customerName}

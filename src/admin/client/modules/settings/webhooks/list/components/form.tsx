@@ -1,10 +1,9 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import { Divider, Paper } from "@material-ui/core"
+import { KeyboardArrowRight } from "@material-ui/icons"
 import messages from "lib/text"
-import Paper from "material-ui/Paper"
-import Divider from "material-ui/Divider"
-import FontIcon from "material-ui/FontIcon"
 import { List, ListItem } from "material-ui/List"
+import React, { FC, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const WebhookItem = ({ webhook }) => {
   const events =
@@ -12,16 +11,14 @@ const WebhookItem = ({ webhook }) => {
       ? webhook.events.join(", ")
       : "none"
   return (
-    <div>
+    <>
       <Divider />
       <Link
         to={`/admin/settings/webhooks/${webhook.id}`}
         style={{ textDecoration: "none" }}
       >
         <ListItem
-          rightIcon={
-            <FontIcon className="material-icons">keyboard_arrow_right</FontIcon>
-          }
+          rightIcon={<KeyboardArrowRight />}
           style={!webhook.enabled ? { color: "rgba(0, 0, 0, 0.3)" } : {}}
           primaryText={
             <div className="row">
@@ -33,36 +30,38 @@ const WebhookItem = ({ webhook }) => {
           }
         />
       </Link>
-    </div>
+    </>
   )
 }
 
-export default class WebhooksList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  componentDidMount() {
-    this.props.onLoad()
-  }
-
-  render() {
-    const { webhooks } = this.props
-    let listItems = webhooks.map((webhook, index) => (
-      <WebhookItem key={index} webhook={webhook} />
-    ))
-
-    return (
-      <div>
-        <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
-          {messages.webhooksAbout}
-        </div>
-        <Paper className="paper-box" zDepth={1}>
-          <div style={{ width: "100%" }}>
-            <List style={{ padding: 0 }}>{listItems}</List>
-          </div>
-        </Paper>
-      </div>
-    )
-  }
+interface props {
+  webhooks
+  onLoad: Function
 }
+
+const WebhooksList: FC<props> = (props: props) => {
+  const { webhooks, onLoad } = props
+
+  useEffect(() => {
+    onLoad()
+  }, [])
+
+  let listItems = webhooks.map((webhook, index) => (
+    <WebhookItem key={index} webhook={webhook} />
+  ))
+
+  return (
+    <>
+      <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
+        {messages.webhooksAbout}
+      </div>
+      <Paper className="paper-box" elevation={4}>
+        <div style={{ width: "100%" }}>
+          <List style={{ padding: 0 }}>{listItems}</List>
+        </div>
+      </Paper>
+    </>
+  )
+}
+
+export default WebhooksList

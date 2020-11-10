@@ -51,8 +51,8 @@ class Theme extends React.Component {
     const { exportInProcess, installInProcess } = this.props
 
     return (
-      <div>
-        <Paper className="paper-box" elevation={1}>
+      <>
+        <Paper className="paper-box" elevation={4}>
           <div className={style.innerBox}>
             <div className="row between-xs middle-xs">
               <div className="col-xs-6">
@@ -67,7 +67,7 @@ class Theme extends React.Component {
                   }
                   disabled={exportInProcess || installInProcess}
                   onClick={this.onExportClick.bind(this)}
-                  primary={true}
+                  primary
                 />
               </div>
             </div>
@@ -95,7 +95,7 @@ class Theme extends React.Component {
                   disabled={installInProcess}
                   labelPosition="before"
                   containerElement="label"
-                  primary={true}
+                  primary
                 >
                   <input
                     type="file"
@@ -110,7 +110,7 @@ class Theme extends React.Component {
         </Paper>
 
         <ThemeSettings />
-      </div>
+      </>
     )
   }
 }

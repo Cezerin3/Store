@@ -1,5 +1,5 @@
+import { Divider } from "@material-ui/core"
 import Checkbox from "material-ui/Checkbox"
-import Divider from "material-ui/Divider"
 import FontIcon from "material-ui/FontIcon"
 import { ListItem } from "material-ui/List"
 import React from "react"
@@ -7,7 +7,11 @@ import { Link } from "react-router-dom"
 import { helper } from "../../../../lib"
 import style from "./style.module.sass"
 
-const CustomersListItem = ({ customer, onSelect, selected, settings }) => {
+interface props { customer, onSelect, selected, settings }
+
+const CustomersListItem = (props:props) => {
+  const { customer, onSelect, selected, settings }=props
+  
   const checked = selected.includes(customer.id)
   let totalSpentFormatted = helper.formatCurrency(
     customer.total_spent,

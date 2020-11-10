@@ -8,7 +8,7 @@ import IconButton from "material-ui/IconButton"
 import IconMenu from "material-ui/IconMenu"
 import MenuItem from "material-ui/MenuItem"
 import RaisedButton from "material-ui/RaisedButton"
-import React from "react"
+import React, { FC } from "react"
 import { Link } from "react-router-dom"
 import TagsInput from "react-tagsinput"
 import { Field, FieldArray, reduxForm } from "redux-form"
@@ -182,7 +182,7 @@ class ProductsArray extends React.Component {
     const { products } = this.state
 
     return (
-      <div>
+      <>
         <Paper className={style.relatedProducts} elevation={4}>
           {fields.map((field, index) => {
             const actions = (
@@ -211,29 +211,37 @@ class ProductsArray extends React.Component {
           />
         </Paper>
 
-        <div>
-          <RaisedButton
-            label={messages.addOrderItem}
-            onClick={this.showAddItem}
-          />
-        </div>
-      </div>
+        <RaisedButton
+          label={messages.addOrderItem}
+          onClick={this.showAddItem}
+        />
+      </>
     )
   }
 }
 
-const ProductAdditionalForm = ({
-  handleSubmit,
-  pristine,
-  reset,
-  submitting,
-  initialValues,
-  settings,
-  categories,
-}) => {
+interface props {
+  handleSubmit
+  pristine
+  reset
+  submitting
+
+  settings
+  categories
+}
+
+const ProductAdditionalForm: FC<props> = (props: props) => {
+  const {
+    handleSubmit,
+    pristine,
+    reset,
+    submitting,
+    settings,
+    categories,
+  } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Paper className="paper-box" elevation={1}>
+      <Paper className="paper-box" elevation={4}>
         <div className={style.innerBox}>
           <div
             className="row middle-xs"
