@@ -1,13 +1,12 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import { Divider, Paper } from "@material-ui/core"
 import messages from "lib/text"
-import Paper from "material-ui/Paper"
-import Divider from "material-ui/Divider"
 import FontIcon from "material-ui/FontIcon"
 import { List, ListItem } from "material-ui/List"
+import React from "react"
+import { Link } from "react-router-dom"
 
 const RedirectItem = ({ redirect }) => (
-  <div>
+  <>
     <Divider />
     <Link
       to={`/admin/settings/redirects/${redirect.id}`}
@@ -28,10 +27,10 @@ const RedirectItem = ({ redirect }) => (
         }
       />
     </Link>
-  </div>
+  </>
 )
 
-export default class RedirectsList extends React.Component {
+class RedirectsList extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -47,16 +46,18 @@ export default class RedirectsList extends React.Component {
     ))
 
     return (
-      <div>
+      <>
         <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
           {messages.redirectsAbout}
         </div>
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           <div style={{ width: "100%" }}>
             <List style={{ padding: 0 }}>{listItems}</List>
           </div>
         </Paper>
-      </div>
+      </>
     )
   }
 }
+
+export default RedirectsList

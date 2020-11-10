@@ -19,6 +19,13 @@ const validate = values => {
   return errors
 }
 
+interface props {
+  handleSubmit
+  pristine
+  submitting
+  redirectId
+}
+
 class EditRedirectForm extends React.Component {
   componentDidMount() {
     this.props.onLoad()
@@ -29,9 +36,9 @@ class EditRedirectForm extends React.Component {
     const isAdd = redirectId === null || redirectId === undefined
 
     return (
-      <div>
+      <>
         <form onSubmit={handleSubmit}>
-          <Paper className="paper-box" zDepth={1}>
+          <Paper className="paper-box" elevation={4}>
             <div className={style.innerBox}>
               <Field
                 name="from"
@@ -61,7 +68,7 @@ class EditRedirectForm extends React.Component {
             </div>
           </Paper>
         </form>
-      </div>
+      </>
     )
   }
 }
