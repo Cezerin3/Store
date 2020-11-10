@@ -1,5 +1,6 @@
-import { api } from "../../lib"
+import api from "lib/api"
 import * as t from "./actionTypes"
+
 const push = () => {}
 
 function requestCustomer() {

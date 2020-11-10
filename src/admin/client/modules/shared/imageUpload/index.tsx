@@ -60,7 +60,7 @@ class ImageUpload extends React.Component {
     }
 
     return (
-      <Paper elevation={4} rounded={false} style={{ width: 200 }}>
+      <Paper elevation={4} square style={{ width: 200 }}>
         <Dropzone
           onDrop={this.onDrop}
           multiple={false}

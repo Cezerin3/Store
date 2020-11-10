@@ -1,6 +1,7 @@
+import api from "lib/api"
+import messages from "lib/text"
 import moment from "moment"
 import React from "react"
-import { api, messages } from "../../../lib"
 import BarChart from "./barChart"
 import * as utils from "./utils"
 
@@ -48,7 +49,7 @@ class OrdersBar extends React.Component {
       <div>
         <BarChart
           data={ordersData}
-          legendDisplay={true}
+          legendDisplay
           title={messages.drawer_orders}
         />
         <BarChart
