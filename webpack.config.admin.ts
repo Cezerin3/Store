@@ -51,7 +51,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".tsx"],
+    extensions: [".tsx", ".ts", ".js"],
     alias: {
       lib: path.resolve(__dirname, "src/admin/client/lib"),
     },
