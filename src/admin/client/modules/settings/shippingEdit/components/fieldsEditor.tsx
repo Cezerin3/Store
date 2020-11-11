@@ -4,11 +4,11 @@ import IconButton from "material-ui/IconButton"
 import IconMenu from "material-ui/IconMenu"
 import MenuItem from "material-ui/MenuItem"
 import RaisedButton from "material-ui/RaisedButton"
-import { CustomToggle } from "modules/shared/form"
 import React from "react"
 import { Field } from "redux-form"
 import { TextField } from "redux-form-material-ui"
 import { messages } from "../../../../lib"
+import { CustomToggle } from "../../../shared/form"
 
 const FieldsEditor = ({ fields }) => {
   return (

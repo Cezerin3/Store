@@ -1,10 +1,10 @@
 import { Divider, Paper } from "@material-ui/core"
 import RaisedButton from "material-ui/RaisedButton"
-import { CustomToggle } from "modules/shared/form"
 import React, { FC, useEffect } from "react"
 import { Field, FieldArray, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
 import { messages } from "../../../../lib"
+import { CustomToggle } from "../../../shared/form"
 import FieldsEditor from "./fieldsEditor"
 import style from "./style.module.sass"
 

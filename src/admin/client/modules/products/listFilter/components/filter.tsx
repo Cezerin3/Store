@@ -24,11 +24,11 @@ const Filter = (props: props) => {
           setEnabled(value)
         }}
         floatingLabelText={messages.enabled}
-        fullWidth={true}
+        fullWidth
       >
         <MenuItem value={null} primaryText={messages.all} label=" " />
         <MenuItem value={false} primaryText={messages.no} />
-        <MenuItem value={true} primaryText={messages.yes} />
+        <MenuItem value primaryText={messages.yes} />
       </SelectField>
 
       <SelectField
@@ -37,11 +37,11 @@ const Filter = (props: props) => {
           setDiscontinued(value)
         }}
         floatingLabelText={messages.products_discontinued}
-        fullWidth={true}
+        fullWidth
       >
         <MenuItem value={null} primaryText={messages.all} label=" " />
         <MenuItem value={false} primaryText={messages.no} />
-        <MenuItem value={true} primaryText={messages.yes} />
+        <MenuItem value primaryText={messages.yes} />
       </SelectField>
 
       <SelectField
@@ -50,11 +50,11 @@ const Filter = (props: props) => {
           setOnSale(value)
         }}
         floatingLabelText={messages.products_onSale}
-        fullWidth={true}
+        fullWidth
       >
         <MenuItem value={null} primaryText={messages.all} label=" " />
         <MenuItem value={false} primaryText={messages.no} />
-        <MenuItem value={true} primaryText={messages.yes} />
+        <MenuItem value primaryText={messages.yes} />
       </SelectField>
 
       <SelectField
@@ -63,7 +63,7 @@ const Filter = (props: props) => {
           setStock(value)
         }}
         floatingLabelText={messages.products_stockStatus}
-        fullWidth={true}
+        fullWidth
       >
         <MenuItem value={null} primaryText={messages.all} label=" " />
         <MenuItem value={"available"} primaryText={messages.products_inStock} />

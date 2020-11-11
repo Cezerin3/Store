@@ -1,11 +1,11 @@
-import Account from "modules/apps/account"
-import AppDetails from "modules/apps/appDetails"
-import ServiceDetails from "modules/apps/serviceDetails"
-import Services from "modules/apps/services"
 import React from "react"
 import { Route, Switch } from "react-router-dom"
-import Login from "routes/apps/login"
-import NotFound from "routes/notFound"
+import Account from "../../modules/apps/account"
+import AppDetails from "../../modules/apps/appDetails"
+import ServiceDetails from "../../modules/apps/serviceDetails"
+import Services from "../../modules/apps/services"
+import Login from "../apps/login"
+import NotFound from "../notFound"
 
 export default () => (
   <Switch>

@@ -1,6 +1,6 @@
 import React from "react"
-import OrdersBar from "modules/reports/ordersBar"
 import { defaults } from "react-chartjs-2"
+import OrdersBar from "../modules/reports/ordersBar"
 
 // Set charts default
 defaults.global.responsive = true

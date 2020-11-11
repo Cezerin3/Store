@@ -1,8 +1,8 @@
 import FontIcon from "material-ui/FontIcon"
 import IconButton from "material-ui/IconButton"
-import DeleteConfirmation from "modules/shared/deleteConfirmation"
 import React from "react"
 import { messages } from "../../../../../lib"
+import DeleteConfirmation from "../../../../shared/deleteConfirmation"
 
 class Buttons extends React.Component {
   constructor(props) {
