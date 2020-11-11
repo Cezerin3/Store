@@ -1,12 +1,11 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import { Paper } from "@material-ui/core"
 import messages from "lib/text"
-
-import Paper from "material-ui/Paper"
 import FontIcon from "material-ui/FontIcon"
 import { List, ListItem } from "material-ui/List"
+import React from "react"
+import { Link } from "react-router-dom"
 
-export default class EmailSettings extends React.Component {
+class EmailSettings extends React.Component {
   componentDidMount() {
     this.props.onLoad()
   }
@@ -20,7 +19,7 @@ export default class EmailSettings extends React.Component {
 
     return (
       <div>
-        <Paper className="paper-box" zDepth={1}>
+        <Paper className="paper-box" elevation={4}>
           <div style={{ width: "100%" }}>
             <List style={{ padding: 0 }}>
               <Link
@@ -155,3 +154,5 @@ export default class EmailSettings extends React.Component {
     )
   }
 }
+
+export default EmailSettings

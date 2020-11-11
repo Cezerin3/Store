@@ -1,14 +1,13 @@
-import React from "react"
-import messages from "lib/text"
+import { Paper } from "@material-ui/core"
 import CezerinClient from "cezerin2-client"
-import settings from "lib/settings"
 import * as auth from "lib/auth"
-
+import settings from "lib/settings"
+import messages from "lib/text"
 import RaisedButton from "material-ui/RaisedButton"
-import Paper from "material-ui/Paper"
 import TextField from "material-ui/TextField"
+import React from "react"
 
-export default class LoginForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -83,7 +82,7 @@ export default class LoginForm extends React.Component {
     return (
       <div className="row col-full-height center-xs middle-xs">
         <div className="col-xs-12 col-sm-8 col-md-6 col-lg-4">
-          <Paper className="loginBox" zDepth={1}>
+          <Paper className="loginBox" elevation={4}>
             <div className="loginTitle">{messages.loginTitle}</div>
             <div className="loginDescription">{messages.loginDescription}</div>
             <div className="loginInput">
@@ -111,3 +110,5 @@ export default class LoginForm extends React.Component {
     )
   }
 }
+
+export default LoginForm
