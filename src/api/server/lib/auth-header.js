@@ -25,4 +25,5 @@ class AuthHeader {
     return jwt.verify(token, cert)
   }
 }
+
 export default new AuthHeader()

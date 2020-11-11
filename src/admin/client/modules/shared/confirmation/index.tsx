@@ -1,8 +1,8 @@
-import React from "react"
 import Dialog from "material-ui/Dialog"
 import FlatButton from "material-ui/FlatButton"
+import React from "react"
 
-export default class ConfirmationDialog extends React.Component {
+class ConfirmationDialog extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -68,3 +68,5 @@ export default class ConfirmationDialog extends React.Component {
     )
   }
 }
+
+export default ConfirmationDialog

@@ -21,7 +21,7 @@ const Description = ({ description }) => (
   />
 )
 
-export default class ProductDetails extends React.Component {
+class ProductDetails extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -113,7 +113,7 @@ export default class ProductDetails extends React.Component {
 
     if (product) {
       return (
-        <Fragment>
+        <>
           <section className="section section-product">
             <div className="container">
               <div className="columns">
@@ -191,10 +191,12 @@ export default class ProductDetails extends React.Component {
               limit={themeSettings.limit_viewed_products || 4}
             />
           )}
-        </Fragment>
+        </>
       )
     } else {
       return null
     }
   }
 }
+
+export default ProductDetails

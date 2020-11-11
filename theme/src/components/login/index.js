@@ -4,7 +4,7 @@ import Lscache from "lscache"
 import Login from "./login"
 import AuthHeader from "../authHeader"
 
-export default class LoginForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -70,3 +70,5 @@ export default class LoginForm extends React.Component {
     )
   }
 }
+
+export default LoginForm

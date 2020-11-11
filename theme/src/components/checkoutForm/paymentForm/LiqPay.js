@@ -1,7 +1,7 @@
 import React from "react"
 
 let scriptAdded = false
-export default class PayPalButton extends React.Component {
+class PayPalButton extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -33,15 +33,15 @@ export default class PayPalButton extends React.Component {
       embedTo: "#liqpay_checkout",
       mode: "embed",
     })
-      .on("liqpay.callback", function (data) {
+      .on("liqpay.callback", data => {
         if (data.status === "success") {
           onPayment()
         }
       })
-      .on("liqpay.ready", function (data) {
+      .on("liqpay.ready", data => {
         // ready
       })
-      .on("liqpay.close", function (data) {
+      .on("liqpay.close", data => {
         // close
       })
   }
@@ -57,10 +57,8 @@ export default class PayPalButton extends React.Component {
   render() {
     const { formSettings, shopSettings, onPayment } = this.props
 
-    return (
-      <div>
-        <div id="liqpay_checkout" />
-      </div>
-    )
+    return <div id="liqpay_checkout" />
   }
 }
+
+export default PayPalButton

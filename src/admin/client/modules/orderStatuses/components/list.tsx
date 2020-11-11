@@ -1,8 +1,8 @@
+import messages from "lib/text"
+import FontIcon from "material-ui/FontIcon"
+import { List, ListItem } from "material-ui/List"
 import React from "react"
 import { Link } from "react-router-dom"
-import messages from "lib/text"
-import { List, ListItem } from "material-ui/List"
-import FontIcon from "material-ui/FontIcon"
 
 const styles = {
   selectedItem: {
@@ -15,7 +15,7 @@ const styles = {
 
 const FolderIcon = <FontIcon className="material-icons">folder</FontIcon>
 
-export default class StatusesList extends React.Component {
+class StatusesList extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -74,3 +74,5 @@ export default class StatusesList extends React.Component {
     )
   }
 }
+
+export default StatusesList

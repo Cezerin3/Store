@@ -1,12 +1,12 @@
-import React from "react"
 import * as auth from "lib/auth"
+import { FC, useEffect } from "react"
 
-export default class Logout extends React.Component {
-  componentWillMount() {
+const Logout: FC = () => {
+  useEffect(() => {
     auth.removeToken()
-  }
+  }, [])
 
-  render() {
-    return null
-  }
+  return null
 }
+
+export default Logout
