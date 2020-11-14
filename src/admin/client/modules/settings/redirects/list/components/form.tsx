@@ -2,7 +2,7 @@ import { Divider, Paper } from "@material-ui/core"
 import { KeyboardArrowRight } from "@material-ui/icons"
 import messages from "lib/text"
 import { List, ListItem } from "material-ui/List"
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const RedirectItem = ({ redirect }) => (
@@ -28,34 +28,28 @@ const RedirectItem = ({ redirect }) => (
   </>
 )
 
-class RedirectsList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+const RedirectsList = props => {
+  useEffect(() => {
+    props.onLoad()
+  }, [])
 
-  componentDidMount() {
-    this.props.onLoad()
-  }
+  const { redirects } = props
+  const listItems = redirects.map((redirect, index) => (
+    <RedirectItem key={index} redirect={redirect} />
+  ))
 
-  render() {
-    const { redirects } = this.props
-    const listItems = redirects.map((redirect, index) => (
-      <RedirectItem key={index} redirect={redirect} />
-    ))
-
-    return (
-      <>
-        <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
-          {messages.redirectsAbout}
+  return (
+    <>
+      <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
+        {messages.redirectsAbout}
+      </div>
+      <Paper className="paper-box" elevation={4}>
+        <div style={{ width: "100%" }}>
+          <List style={{ padding: 0 }}>{listItems}</List>
         </div>
-        <Paper className="paper-box" elevation={4}>
-          <div style={{ width: "100%" }}>
-            <List style={{ padding: 0 }}>{listItems}</List>
-          </div>
-        </Paper>
-      </>
-    )
-  }
+      </Paper>
+    </>
+  )
 }
 
 export default RedirectsList

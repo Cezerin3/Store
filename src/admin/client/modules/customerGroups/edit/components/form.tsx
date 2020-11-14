@@ -52,7 +52,7 @@ const Form = props => {
             variant="contained"
             color="primary"
             className={style.button}
-            onClick={this.props.onCancel}
+            onClick={props.onCancel}
           >
             {messages.cancel}
           </Button>

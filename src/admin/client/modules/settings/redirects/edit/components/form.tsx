@@ -1,5 +1,5 @@
 import { Button, Paper } from "@material-ui/core"
-import React from "react"
+import React, { useEffect } from "react"
 import { Field, reduxForm } from "redux-form"
 import { TextField } from "redux-form-material-ui"
 import { messages } from "../../../../../lib"
@@ -23,55 +23,54 @@ interface props {
   pristine
   submitting
   redirectId
+  onLoad: Function
 }
 
-class EditRedirectForm extends React.Component {
-  componentDidMount() {
-    this.props.onLoad()
-  }
+const EditRedirectForm = (props: props) => {
+  useEffect(() => {
+    props.onLoad()
+  }, [])
 
-  render() {
-    const { handleSubmit, pristine, submitting, redirectId } = this.props
-    const isAdd = redirectId === null || redirectId === undefined
+  const { handleSubmit, pristine, submitting, redirectId } = props
+  const isAdd = redirectId === null || redirectId === undefined
 
-    return (
-      <>
-        <form onSubmit={handleSubmit}>
-          <Paper className="paper-box" elevation={4}>
-            <div className={style.innerBox}>
-              <Field
-                name="from"
-                component={TextField}
-                floatingLabelText="From (e.g. /old-path)"
-                fullWidth
-              />
-              <Field
-                name="to"
-                component={TextField}
-                floatingLabelText="To (e.g. /new-path)"
-                fullWidth
-              />
-            </div>
-            <div
-              className={`buttons-box ${
-                pristine && !isAdd ? "buttons-box-pristine" : "buttons-box-show"
-              }`}
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <Paper className="paper-box" elevation={4}>
+          <div className={style.innerBox}>
+            <Field
+              name="from"
+              component={TextField}
+              floatingLabelText="From (e.g. /old-path)"
+              fullWidth
+            />
+            <Field
+              name="to"
+              component={TextField}
+              floatingLabelText="To (e.g. /new-path)"
+              fullWidth
+            />
+          </div>
+          <div
+            className={`buttons-box ${
+              pristine && !isAdd ? "buttons-box-pristine" : "buttons-box-show"
+            }`}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              className={style.button}
+              disabled={pristine || submitting}
             >
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                className={style.button}
-                disabled={pristine || submitting}
-              >
-                {isAdd ? messages.add : messages.save}
-              </Button>
-            </div>
-          </Paper>
-        </form>
-      </>
-    )
-  }
+              {isAdd ? messages.add : messages.save}
+            </Button>
+          </div>
+        </Paper>
+      </form>
+    </>
+  )
 }
 
 export default reduxForm({

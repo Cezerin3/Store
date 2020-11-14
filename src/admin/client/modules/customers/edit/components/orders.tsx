@@ -5,7 +5,7 @@ import * as helper from "lib/helper"
 import messages from "lib/text"
 import { List, ListItem } from "material-ui/List"
 import moment from "moment"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import style from "./style.module.sass"
 
@@ -95,45 +95,37 @@ const CustomerOrder = ({ order, settings }) => {
   )
 }
 
-class CustomerOrders extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      orders: [],
-    }
-  }
+const CustomerOrders = props => {
+  const [orders, setOrders] = useState([])
 
-  componentDidMount() {
+  useEffect(() => {
     api.orders
-      .list({ customer_id: this.props.customerId })
+      .list({ customer_id: props.customerId })
       .then(({ status, json }) => {
-        this.setState({ orders: json.data })
+        setOrders(json.data)
       })
+  }, [])
+
+  const { customerId, settings } = props
+
+  let orderItems = []
+  if (orders.length > 0) {
+    orderItems = orders.map((order, index) => (
+      <CustomerOrder key={index} order={order} settings={settings} />
+    ))
   }
 
-  render() {
-    const { customerId, settings } = this.props
-    const { orders } = this.state
-
-    let orderItems = []
-    if (orders.length > 0) {
-      orderItems = orders.map((order, index) => (
-        <CustomerOrder key={index} order={order} settings={settings} />
-      ))
-    }
-
-    return (
-      <Paper className="paper-box" elevation={4}>
-        <div
-          className="blue-title"
-          style={{ paddingLeft: 16, paddingBottom: 16 }}
-        >
-          {messages.customers_orders}
-        </div>
-        <List style={{ padding: 0 }}>{orderItems}</List>
-      </Paper>
-    )
-  }
+  return (
+    <Paper className="paper-box" elevation={4}>
+      <div
+        className="blue-title"
+        style={{ paddingLeft: 16, paddingBottom: 16 }}
+      >
+        {messages.customers_orders}
+      </div>
+      <List style={{ padding: 0 }}>{orderItems}</List>
+    </Paper>
+  )
 }
 
 export default CustomerOrders

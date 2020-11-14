@@ -1,6 +1,6 @@
 import { Button, Divider, Paper } from "@material-ui/core"
 import Dialog from "material-ui/Dialog"
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { helper, messages } from "../../../../lib"
 import ShippingAddressForm from "./shippingAddressForm"
@@ -131,110 +131,96 @@ const BillingAddress = ({ address, settings }) => {
   }
 }
 
-class OrderCustomer extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      openShippingEdit: false,
-    }
+const OrderCustomer = props => {
+  const [openShippingEdit, setOpenShippingEdit] = useState(false)
+
+  const { order, settings } = props
+
+  const hideShippingEdit = () => {
+    setOpenShippingEdit(false)
   }
 
-  showShippingEdit = () => {
-    this.setState({ openShippingEdit: true })
+  const saveShippingEdit = address => {
+    props.onShippingAddressUpdate(address)
+    hideShippingEdit()
   }
 
-  hideShippingEdit = () => {
-    this.setState({ openShippingEdit: false })
-  }
+  const allowEdit = order.closed === false && order.cancelled === false
+  let mapAddress = `${order.shipping_address.address1} ${order.shipping_address.city} ${order.shipping_address.state} ${order.shipping_address.postal_code}`
+  mapAddress = mapAddress.replace(/ /g, "+")
+  const mapUrl = `https://www.google.com/maps/place/${mapAddress}`
 
-  saveShippingEdit = address => {
-    this.props.onShippingAddressUpdate(address)
-    this.hideShippingEdit()
-  }
-
-  render() {
-    const { order, settings } = this.props
-
-    const allowEdit = order.closed === false && order.cancelled === false
-    let mapAddress = `${order.shipping_address.address1} ${order.shipping_address.city} ${order.shipping_address.state} ${order.shipping_address.postal_code}`
-    mapAddress = mapAddress.replace(/ /g, "+")
-    const mapUrl = `https://www.google.com/maps/place/${mapAddress}`
-
-    return (
-      <>
-        <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
-          {messages.customer}
-        </div>
-        <Paper className="paper-box" elevation={4}>
-          <div className={style.innerBox}>
-            <div className={style.address}>
-              <Link
-                to={`/admin/customer/${order.customer_id}`}
-                className={style.link}
-              >
-                {order.customer && order.customer.full_name}
-              </Link>
-              <a href={"MailTo:" + order.email} className={style.link}>
-                {order.email}
-              </a>
-              <p>{order.mobile}</p>
-            </div>
-
-            <Divider
-              style={{
-                marginTop: 30,
-                marginBottom: 30,
-                marginLeft: -30,
-                marginRight: -30,
-              }}
-            />
-
-            <div style={{ paddingBottom: 16, paddingTop: 0 }}>
-              {messages.shippingAddress}
-            </div>
-            <ShippingAddress order={order} settings={settings} />
-
-            {allowEdit && (
-              <Button
-                variant="contained"
-                color="primary"
-                style={{ marginRight: 15 }}
-                onClick={this.showShippingEdit}
-              >
-                {messages.edit}
-              </Button>
-            )}
-            <a href={mapUrl} target="_blank">
-              <Button variant="contained" color="primary">
-                View map
-              </Button>
-            </a>
-
-            <BillingAddress
-              address={order.billing_address}
-              settings={settings}
-            />
-
-            <Dialog
-              title={messages.shippingAddress}
-              modal={false}
-              open={this.state.openShippingEdit}
-              onRequestClose={this.hideShippingEdit}
-              autoScrollBodyContent={true}
-              contentStyle={{ width: 600 }}
+  return (
+    <>
+      <div style={{ margin: 20, color: "rgba(0, 0, 0, 0.52)" }}>
+        {messages.customer}
+      </div>
+      <Paper className="paper-box" elevation={4}>
+        <div className={style.innerBox}>
+          <div className={style.address}>
+            <Link
+              to={`/admin/customer/${order.customer_id}`}
+              className={style.link}
             >
-              <ShippingAddressForm
-                initialValues={order.shipping_address}
-                onCancel={this.hideShippingEdit}
-                onSubmit={this.saveShippingEdit}
-                shippingMethod={order.shipping_method_details}
-              />
-            </Dialog>
+              {order.customer && order.customer.full_name}
+            </Link>
+            <a href={"MailTo:" + order.email} className={style.link}>
+              {order.email}
+            </a>
+            <p>{order.mobile}</p>
           </div>
-        </Paper>
-      </>
-    )
-  }
+
+          <Divider
+            style={{
+              marginTop: 30,
+              marginBottom: 30,
+              marginLeft: -30,
+              marginRight: -30,
+            }}
+          />
+
+          <div style={{ paddingBottom: 16, paddingTop: 0 }}>
+            {messages.shippingAddress}
+          </div>
+          <ShippingAddress order={order} settings={settings} />
+
+          {allowEdit && (
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ marginRight: 15 }}
+              onClick={() => setOpenShippingEdit(true)}
+            >
+              {messages.edit}
+            </Button>
+          )}
+          <a href={mapUrl} target="_blank">
+            <Button variant="contained" color="primary">
+              View map
+            </Button>
+          </a>
+
+          <BillingAddress address={order.billing_address} settings={settings} />
+
+          <Dialog
+            title={messages.shippingAddress}
+            modal={false}
+            open={openShippingEdit}
+            onRequestClose={hideShippingEdit}
+            autoScrollBodyContent
+            contentStyle={{ width: 600 }}
+          >
+            <ShippingAddressForm
+              initialValues={order.shipping_address}
+              onCancel={hideShippingEdit}
+              onSubmit={saveShippingEdit}
+              shippingMethod={order.shipping_method_details}
+            />
+          </Dialog>
+        </div>
+      </Paper>
+    </>
+  )
 }
 
 export default OrderCustomer

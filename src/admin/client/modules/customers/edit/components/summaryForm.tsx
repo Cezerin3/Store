@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core"
 import api from "lib/api"
 import MenuItem from "material-ui/MenuItem"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Field, reduxForm } from "redux-form"
 import { SelectField, TextField } from "redux-form-material-ui"
 import { messages } from "../../../../lib"
@@ -20,94 +20,87 @@ const validate = values => {
   return errors
 }
 
-class CustomerEditForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      groups: [],
-    }
-  }
+const CustomerEditForm = props => {
+  const [groups, setGroups] = useState([])
 
-  componentDidMount() {
+  useEffect(() => {
     api.customerGroups.list().then(({ status, json }) => {
-      this.setState({ groups: json })
+      setGroups(json)
     })
-  }
+  }, [])
 
-  render() {
-    let { handleSubmit, pristine, submitting, onCancel } = this.props
+  const { handleSubmit, pristine, submitting, onCancel } = props
 
-    let groupItems = this.state.groups.map((item, index) => (
-      <MenuItem key={index} value={item.id} primaryText={item.name} />
-    ))
-    groupItems.push(
-      <MenuItem
-        key="none"
-        value={null}
-        primaryText={messages.customers_noGroup}
-      />
-    )
+  let groupItems = groups.map((item, index) => (
+    <MenuItem key={index} value={item.id} primaryText={item.name} />
+  ))
+  groupItems.push(
+    <MenuItem
+      key="none"
+      value={null}
+      primaryText={messages.customers_noGroup}
+    />
+  )
 
-    return (
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "initial",
-          width: "100%",
-        }}
-      >
-        <>
-          <Field
-            component={TextField}
-            fullWidth
-            name="full_name"
-            floatingLabelText={messages.fullName}
-          />
-          <Field
-            component={SelectField}
-            fullWidth
-            name="group_id"
-            floatingLabelText={messages.group}
-          >
-            {groupItems}
-          </Field>
-          <Field
-            component={TextField}
-            fullWidth
-            name="email"
-            floatingLabelText={messages.email}
-          />
-          <Field
-            component={TextField}
-            fullWidth
-            name="mobile"
-            floatingLabelText={messages.mobile}
-          />
-          <Field
-            component={TextField}
-            fullWidth
-            name="note"
-            floatingLabelText={messages.note}
-            multiLine
-          />
-        </>
-        <div className={style.shippingButtons}>
-          <Button variant="contained" color="primary" onClick={onCancel}>
-            {messages.cancel}
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            style={{ marginLeft: 12 }}
-            disabled={pristine || submitting}
-          >
-            {messages.save}
-          </Button>
-        </div>
-      </form>
-    )
-  }
+  return (
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        display: "initial",
+        width: "100%",
+      }}
+    >
+      <>
+        <Field
+          component={TextField}
+          fullWidth
+          name="full_name"
+          floatingLabelText={messages.fullName}
+        />
+        <Field
+          component={SelectField}
+          fullWidth
+          name="group_id"
+          floatingLabelText={messages.group}
+        >
+          {groupItems}
+        </Field>
+        <Field
+          component={TextField}
+          fullWidth
+          name="email"
+          floatingLabelText={messages.email}
+        />
+        <Field
+          component={TextField}
+          fullWidth
+          name="mobile"
+          floatingLabelText={messages.mobile}
+        />
+        <Field
+          component={TextField}
+          fullWidth
+          name="note"
+          floatingLabelText={messages.note}
+          multiLine
+        />
+      </>
+      <div className={style.shippingButtons}>
+        <Button variant="contained" color="primary" onClick={onCancel}>
+          {messages.cancel}
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          style={{ marginLeft: 12 }}
+          disabled={pristine || submitting}
+        >
+          {messages.save}
+        </Button>
+      </div>
+    </form>
+  )
 }
 
 export default reduxForm({

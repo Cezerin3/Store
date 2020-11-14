@@ -3,135 +3,123 @@ import { Add, Delete, Folder } from "@material-ui/icons"
 import messages from "lib/text"
 import Dialog from "material-ui/Dialog"
 import IconButton from "material-ui/IconButton"
-import React from "react"
+import React, { FC, useState } from "react"
 import CategorySelect from "../../../productCategories/select"
 import DeleteConfirmation from "../../../shared/deleteConfirmation"
 import Search from "./search"
 
-class Buttons extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      categoryIdMoveTo: null,
-      openMoveTo: false,
-      openDelete: false,
-    }
+interface props {
+  search
+  setSearch
+  selectedCount
+  onDelete: Function
+  onCreate
+  onImportProducts
+  onMoveTo: Function
+}
+
+const Buttons: FC<props> = (props: props) => {
+  const [categoryIdMoveTo, setCategoryIdMoveTo] = useState(null)
+  const [openMoveTo, setOpenMoveTo] = useState(false)
+  const [openDelete, setOpenDelete] = useState(false)
+
+  const {
+    search,
+    setSearch,
+    selectedCount,
+    onDelete,
+    onCreate,
+    onImportProducts,
+    onMoveTo,
+  } = props
+
+  const deleteProduct = () => {
+    setOpenDelete(false)
+    onDelete()
   }
 
-  showMoveTo = () => {
-    this.setState({ openMoveTo: true })
+  const closeMoveTo = () => {
+    setOpenMoveTo(false)
   }
 
-  openDelete = () => {
-    this.setState({ openDelete: true })
+  const saveMoveTo = () => {
+    setOpenMoveTo(false)
+    onMoveTo(categoryIdMoveTo)
   }
 
-  closeDelete = () => {
-    this.setState({ openDelete: false })
-  }
+  const actionsMoveTo = [
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={closeMoveTo}
+      style={{ marginRight: 10 }}
+    >
+      {messages.cancel}
+    </Button>,
+    <Button
+      variant="contained"
+      color="primary"
+      focusRipple
+      onClick={saveMoveTo}
+    >
+      {messages.actions_moveHere}
+    </Button>,
+  ]
 
-  deleteProduct = () => {
-    this.setState({ openDelete: false })
-    this.props.onDelete()
-  }
-
-  closeMoveTo = () => {
-    this.setState({ openMoveTo: false })
-  }
-
-  saveMoveTo = () => {
-    this.setState({ openMoveTo: false })
-    this.props.onMoveTo(this.state.categoryIdMoveTo)
-  }
-
-  selectMoveTo = categoryId => {
-    this.setState({ categoryIdMoveTo: categoryId })
-  }
-
-  render() {
-    const {
-      search,
-      setSearch,
-      selectedCount,
-      onDelete,
-      onCreate,
-      onImportProducts,
-    } = this.props
-
-    const actionsMoveTo = [
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={this.closeMoveTo}
-        style={{ marginRight: 10 }}
-      >
-        {messages.cancel}
-      </Button>,
-      <Button
-        variant="contained"
-        color="primary"
-        focusRipple
-        onClick={this.saveMoveTo}
-      >
-        {messages.actions_moveHere}
-      </Button>,
-    ]
-
-    return (
-      <>
-        <Search value={search} setSearch={setSearch} />
-        {selectedCount > 0 && (
-          <>
-            <IconButton
-              touch
-              tooltipPosition="bottom-left"
-              tooltip={messages.actions_delete}
-              onClick={this.openDelete}
-            >
-              <Delete htmlColor="#fff" />
-            </IconButton>
-            <IconButton
-              touch
-              tooltipPosition="bottom-left"
-              tooltip={messages.actions_moveTo}
-              onClick={this.showMoveTo}
-            >
-              <Folder htmlColor="#fff" />
-            </IconButton>
-            <DeleteConfirmation
-              open={this.state.openDelete}
-              isSingle={false}
-              itemsCount={selectedCount}
-              onCancel={this.closeDelete}
-              onDelete={this.deleteProduct}
+  return (
+    <>
+      <Search value={search} setSearch={setSearch} />
+      {selectedCount > 0 && (
+        <>
+          <IconButton
+            touch
+            tooltipPosition="bottom-left"
+            tooltip={messages.actions_delete}
+            onClick={() => setOpenDelete(true)}
+          >
+            <Delete htmlColor="#fff" />
+          </IconButton>
+          <IconButton
+            touch
+            tooltipPosition="bottom-left"
+            tooltip={messages.actions_moveTo}
+            onClick={() => setOpenMoveTo(true)}
+          >
+            <Folder htmlColor="#fff" />
+          </IconButton>
+          <DeleteConfirmation
+            open={openDelete}
+            isSingle={false}
+            itemsCount={selectedCount}
+            onCancel={() => setOpenDelete(false)}
+            onDelete={deleteProduct}
+          />
+          <Dialog
+            title={messages.actions_moveTo}
+            actions={actionsMoveTo}
+            modal={false}
+            open={openMoveTo}
+            onRequestClose={closeMoveTo}
+            autoScrollBodyContent
+          >
+            <CategorySelect
+              onSelect={categoryId => setCategoryIdMoveTo(categoryId)}
+              selectedId={categoryIdMoveTo}
+              opened
             />
-            <Dialog
-              title={messages.actions_moveTo}
-              actions={actionsMoveTo}
-              modal={false}
-              open={this.state.openMoveTo}
-              onRequestClose={this.closeMoveTo}
-              autoScrollBodyContent
-            >
-              <CategorySelect
-                onSelect={this.selectMoveTo}
-                selectedId={this.state.categoryIdMoveTo}
-                opened
-              />
-            </Dialog>
-          </>
-        )}
-        <IconButton
-          touch
-          tooltipPosition="bottom-left"
-          tooltip={messages.addProduct}
-          onClick={onCreate}
-        >
-          <Add htmlColor="#fff" />
-        </IconButton>
-      </>
-    )
-  }
+          </Dialog>
+        </>
+      )}
+      <IconButton
+        touch
+        tooltipPosition="bottom-left"
+        tooltip={messages.addProduct}
+        onClick={onCreate}
+      >
+        <Add htmlColor="#fff" />
+      </IconButton>
+    </>
+  )
 }
 
 export default Buttons

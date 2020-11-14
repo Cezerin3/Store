@@ -2,44 +2,38 @@ import React from "react"
 import { api } from "../../../../lib"
 import ImageUpload from "../../../shared/imageUpload"
 
-class ThemeImageUpload extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  onDelete = () => {
-    const fileName = this.props.input.value
+const ThemeImageUpload = props => {
+  const onDelete = () => {
+    const fileName = props.input.value
     api.theme.assets.deleteFile(fileName).then(() => {
-      this.props.input.onChange("")
+      props.input.onChange("")
     })
   }
 
-  onUpload = formData => {
+  const onUpload = formData => {
     api.theme.assets.uploadFile(formData).then(({ status, json }) => {
       const fileName = json.file
-      this.props.input.onChange(fileName)
+      props.input.onChange(fileName)
     })
   }
 
-  render() {
-    let { input, label } = this.props
-    const imageUrl =
-      input.value && input.value.length > 0
-        ? "/assets/images/" + input.value
-        : null
+  let { input, label } = props
+  const imageUrl =
+    input.value && input.value.length > 0
+      ? "/assets/images/" + input.value
+      : null
 
-    return (
-      <>
-        <p>{label}</p>
-        <ImageUpload
-          uploading={false}
-          imageUrl={imageUrl}
-          onDelete={this.onDelete}
-          onUpload={this.onUpload}
-        />
-      </>
-    )
-  }
+  return (
+    <>
+      <p>{label}</p>
+      <ImageUpload
+        uploading={false}
+        imageUrl={imageUrl}
+        onDelete={onDelete}
+        onUpload={onUpload}
+      />
+    </>
+  )
 }
 
 export default ThemeImageUpload
