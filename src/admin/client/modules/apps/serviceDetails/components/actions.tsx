@@ -1,58 +1,62 @@
 import { Button, Paper } from "@material-ui/core"
-import React from "react"
+import React, { FC, useState } from "react"
 import { api, messages } from "../../../../lib"
 import style from "./style.module.sass"
 
-class ActionComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: false,
+interface props {
+  action: { id: String; name: string; description: string }
+  serviceId: string
+  fetchServiceLogs: Function
+}
+
+const ActionComponent: FC<props> = (props: props) => {
+  const [loading, setLoading] = useState(false)
+  const { action, serviceId, fetchServiceLogs } = props
+
+  const handleActionCall = async () => {
+    setLoading(true)
+
+    try {
+      await api.webstore.services.actions.call(serviceId, action.id)
+      setLoading(false)
+      return fetchServiceLogs()
+    } catch (error) {
+      console.error(error)
+      alert(error)
+      setLoading(false)
+      fetchServiceLogs()
     }
   }
 
-  handleActionCall = () => {
-    const { action, serviceId, fetchServiceLogs } = this.props
-    this.setState({ loading: true })
-
-    return api.webstore.services.actions
-      .call(serviceId, action.id)
-      .then(({ status, json }) => {
-        this.setState({ loading: false })
-        fetchServiceLogs()
-      })
-      .catch(error => {
-        alert(error)
-        this.setState({ loading: false })
-        fetchServiceLogs()
-      })
-  }
-
-  render() {
-    const { action, serviceId } = this.props
-    return (
-      <div className={style.action}>
-        <div className="row middle-xs">
-          <div className="col-xs-7" style={{ fontSize: "14px" }}>
-            {action.description}
-          </div>
-          <div className="col-xs-5" style={{ textAlign: "right" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              disabled={this.state.loading}
-              onClick={this.handleActionCall}
-            >
-              {action.name}
-            </Button>
-          </div>
+  return (
+    <div className={style.action}>
+      <div className="row middle-xs">
+        <div className="col-xs-7" style={{ fontSize: "14px" }}>
+          {action.description}
+        </div>
+        <div className="col-xs-5" style={{ textAlign: "right" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            disabled={loading}
+            onClick={handleActionCall}
+          >
+            {action.name}
+          </Button>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
-const ServiceActions = ({ actions, serviceId, fetchServiceLogs }) => {
+interface ServiceProps {
+  actions: { id: String; name: string; description: string }[]
+  serviceId: string
+  fetchServiceLogs: Function
+}
+
+const ServiceActions: FC<ServiceProps> = (props: ServiceProps) => {
+  const { actions, serviceId, fetchServiceLogs } = props
   const buttons = actions.map((action, index) => (
     <ActionComponent
       key={index}

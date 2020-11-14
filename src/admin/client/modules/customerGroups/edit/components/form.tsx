@@ -18,69 +18,57 @@ const validate = values => {
   return errors
 }
 
-class Form extends React.Component {
-  constructor(props) {
-    super(props)
+const Form = props => {
+  const { handleSubmit, pristine, submitting, isSaving, initialValues } = props
+
+  let groupId = null
+
+  if (initialValues) {
+    groupId = initialValues.id
   }
 
-  render() {
-    let {
-      handleSubmit,
-      pristine,
-      submitting,
-      isSaving,
-      initialValues,
-    } = this.props
-
-    let groupId = null
-
-    if (initialValues) {
-      groupId = initialValues.id
-    }
-
-    return (
-      <Paper className="paper-box" elevation={4}>
-        <form onSubmit={handleSubmit}>
-          <div className={style.innerBox}>
-            <Field
-              name="name"
-              component={TextField}
-              floatingLabelText={messages.customerGroups_name + " *"}
-              fullWidth
-            />
-            <br />
-            <Field
-              name="description"
-              component={TextField}
-              floatingLabelText={messages.description}
-              fullWidth
-              multiLine
-              rows={2}
-            />
-          </div>
-          <div className="buttons-box">
-            <Button
-              variant="contained"
-              color="primary"
-              className={style.button}
-              onClick={this.props.onCancel}
-            >
-              {messages.cancel}
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              className={style.button}
-              disabled={pristine || submitting || isSaving}
-            >
-              {groupId ? messages.save : messages.add}
-            </Button>
-          </div>
-        </form>
-      </Paper>
-    )
-  }
+  return (
+    <Paper className="paper-box" elevation={4}>
+      <form onSubmit={handleSubmit}>
+        <div className={style.innerBox}>
+          <Field
+            name="name"
+            component={TextField}
+            floatingLabelText={messages.customerGroups_name + " *"}
+            fullWidth
+          />
+          <br />
+          <Field
+            name="description"
+            component={TextField}
+            floatingLabelText={messages.description}
+            fullWidth
+            multiLine
+            rows={2}
+          />
+        </div>
+        <div className="buttons-box">
+          <Button
+            variant="contained"
+            color="primary"
+            className={style.button}
+            onClick={this.props.onCancel}
+          >
+            {messages.cancel}
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            className={style.button}
+            disabled={pristine || submitting || isSaving}
+          >
+            {groupId ? messages.save : messages.add}
+          </Button>
+        </div>
+      </form>
+    </Paper>
+  )
 }
 
 export default reduxForm({

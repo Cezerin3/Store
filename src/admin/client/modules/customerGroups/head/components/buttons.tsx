@@ -1,70 +1,55 @@
 import { Add, Delete } from "@material-ui/icons"
 import messages from "lib/text"
 import IconButton from "material-ui/IconButton"
-import React from "react"
+import React, { useState } from "react"
 import DeleteConfirmation from "../../../shared/deleteConfirmation"
 
-class Buttons extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      openDelete: false,
-    }
+const Buttons = props => {
+  const [openDelete, setOpenDelete] = useState(false)
+
+  const deleteGroup = () => {
+    setOpenDelete(false)
+    props.onDelete(props.selected.id)
   }
 
-  showDelete = () => {
-    this.setState({ openDelete: true })
-  }
+  const { selected, onDelete, onCreate } = props
+  const groupName =
+    selected && selected.name && selected.name.length > 0
+      ? selected.name
+      : "Draft"
 
-  closeDelete = () => {
-    this.setState({ openDelete: false })
-  }
-
-  deleteGroup = () => {
-    this.setState({ openDelete: false })
-    this.props.onDelete(this.props.selected.id)
-  }
-
-  render() {
-    const { selected, onDelete, onCreate } = this.props
-    const groupName =
-      selected && selected.name && selected.name.length > 0
-        ? selected.name
-        : "Draft"
-
-    return (
-      <span>
-        {selected && (
-          <>
-            <IconButton
-              touch
-              tooltip={messages.actions_delete}
-              tooltipPosition="bottom-left"
-              onClick={this.showDelete}
-            >
-              <Delete />
-            </IconButton>
-            <DeleteConfirmation
-              open={this.state.openDelete}
-              isSingle
-              itemsCount={1}
-              itemName={groupName}
-              onCancel={this.closeDelete}
-              onDelete={this.deleteGroup}
-            />
-          </>
-        )}
-        <IconButton
-          touch
-          tooltipPosition="bottom-left"
-          tooltip={messages.customerGroups_titleAdd}
-          onClick={onCreate}
-        >
-          <Add htmlColor="#fff" />
-        </IconButton>
-      </span>
-    )
-  }
+  return (
+    <span>
+      {selected && (
+        <>
+          <IconButton
+            touch
+            tooltip={messages.actions_delete}
+            tooltipPosition="bottom-left"
+            onClick={() => setOpenDelete(true)}
+          >
+            <Delete />
+          </IconButton>
+          <DeleteConfirmation
+            open={openDelete}
+            isSingle
+            itemsCount={1}
+            itemName={groupName}
+            onCancel={() => setOpenDelete(false)}
+            onDelete={deleteGroup}
+          />
+        </>
+      )}
+      <IconButton
+        touch
+        tooltipPosition="bottom-left"
+        tooltip={messages.customerGroups_titleAdd}
+        onClick={onCreate}
+      >
+        <Add htmlColor="#fff" />
+      </IconButton>
+    </span>
+  )
 }
 
 export default Buttons

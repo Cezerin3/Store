@@ -1,7 +1,7 @@
 import { Clear, Folder, Settings } from "@material-ui/icons"
 import messages from "lib/text"
 import { List, ListItem } from "material-ui/List"
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const styles = {
@@ -15,82 +15,69 @@ const styles = {
 
 const FolderIcon = <Folder />
 
-class Groups extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+const Groups = props => {
+  useEffect(() => {
+    props.onLoad()
+  }, [])
 
-  componentDidMount() {
-    this.props.onLoad()
-  }
+  const { onSelect, selectedId, items, showAll, showRoot, showManage } = props
 
-  render() {
-    const {
-      onSelect,
-      selectedId,
-      items,
-      showAll,
-      showRoot,
-      showManage,
-    } = this.props
+  const rows = items.map(item => (
+    <ListItem
+      key={item.id}
+      className="treeItem"
+      style={item.id === selectedId ? styles.selectedItem : null}
+      innerDivStyle={styles.innerItem}
+      primaryText={item.name}
+      leftIcon={FolderIcon}
+      onClick={() => {
+        props.onSelect(item.id)
+      }}
+    />
+  ))
 
-    const rows = items.map(item => (
-      <ListItem
-        key={item.id}
-        className="treeItem"
-        style={item.id === selectedId ? styles.selectedItem : null}
-        innerDivStyle={styles.innerItem}
-        primaryText={item.name}
-        leftIcon={FolderIcon}
-        onClick={() => {
-          this.props.onSelect(item.id)
-        }}
-      />
-    ))
+  return (
+    <List>
+      {showRoot && (
+        <ListItem
+          className="treeItem"
+          primaryText={messages.customers_noGroup}
+          style={"root" === selectedId ? styles.selectedItem : null}
+          innerDivStyle={styles.innerItem}
+          leftIcon={<Clear />}
+          onClick={() => {
+            onSelect("root")
+          }}
+        />
+      )}
 
-    return (
-      <List>
-        {showRoot && (
+      {showAll && (
+        <ListItem
+          className="treeItem"
+          primaryText={messages.customerGroups_all}
+          style={"all" === selectedId ? styles.selectedItem : null}
+          innerDivStyle={styles.innerItem}
+          leftIcon={FolderIcon}
+          onClick={() => {
+            onSelect("all")
+          }}
+        />
+      )}
+
+      {rows}
+
+      {showManage && (
+        <Link to="/admin/customers/groups" style={{ textDecoration: "none" }}>
           <ListItem
             className="treeItem"
-            primaryText={messages.customers_noGroup}
-            style={"root" === selectedId ? styles.selectedItem : null}
+            primaryText={messages.customerGroups_titleEditMany}
             innerDivStyle={styles.innerItem}
-            leftIcon={<Clear />}
-            onClick={() => {
-              onSelect("root")
-            }}
+            leftIcon={<Settings />}
           />
-        )}
-
-        {showAll && (
-          <ListItem
-            className="treeItem"
-            primaryText={messages.customerGroups_all}
-            style={"all" === selectedId ? styles.selectedItem : null}
-            innerDivStyle={styles.innerItem}
-            leftIcon={FolderIcon}
-            onClick={() => {
-              onSelect("all")
-            }}
-          />
-        )}
-
-        {rows}
-
-        {showManage && (
-          <Link to="/admin/customers/groups" style={{ textDecoration: "none" }}>
-            <ListItem
-              className="treeItem"
-              primaryText={messages.customerGroups_titleEditMany}
-              innerDivStyle={styles.innerItem}
-              leftIcon={<Settings />}
-            />
-          </Link>
-        )}
-      </List>
-    )
-  }
+        </Link>
+      )}
+    </List>
+  )
 }
 
 export default Groups
