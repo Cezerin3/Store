@@ -57,12 +57,48 @@ const ProductOptions = ({ options, onChange, selectedOptions }) => {
 export const OrderItem = props => {
   const [quantity, setQuantity] = useState(props.item.quantity)
   const [variantId, setVariantId] = useState(props.item.variant_id)
-  const [selectedOptions, setSelectedOptions] = useState(() =>
-    getOptionsByVariant()
-  )
-  const [selectedVariant, setSelectedVariant] = useState(() =>
-    getCurrentVariant()
-  )
+
+  const getOptionsByVariant = () => {
+    const variantId = props.item.variant_id
+    const product = props.item.product
+    let selectedOptions = {}
+    if (
+      variantId &&
+      product &&
+      product.variants &&
+      product.variants.length > 0
+    ) {
+      const variant = product.variants.find(v => v.id === variantId)
+      if (variant) {
+        for (const option of variant.options) {
+          selectedOptions[option.option_id] = option.value_id
+        }
+      }
+    }
+
+    return selectedOptions
+  }
+
+  const [selectedOptions, setSelectedOptions] = useState(getOptionsByVariant())
+
+  const getCurrentVariant = () => {
+    const variantId = props.item.variant_id
+    const product = props.item.product
+    let variant = null
+
+    if (
+      variantId &&
+      product &&
+      product.variants &&
+      product.variants.length > 0
+    ) {
+      variant = product.variants.find(v => v.id === variantId)
+    }
+
+    return variant
+  }
+
+  const [selectedVariant, setSelectedVariant] = useState(getCurrentVariant())
   const [showEdit, setShowEdit] = useState(false)
 
   const submitEditForm = () => {
@@ -103,44 +139,6 @@ export const OrderItem = props => {
     }
 
     setSelectedVariant(null)
-  }
-
-  const getCurrentVariant = () => {
-    const variantId = props.item.variant_id
-    const product = props.item.product
-    let variant = null
-
-    if (
-      variantId &&
-      product &&
-      product.variants &&
-      product.variants.length > 0
-    ) {
-      variant = product.variants.find(v => v.id === variantId)
-    }
-
-    return variant
-  }
-
-  const getOptionsByVariant = () => {
-    const variantId = props.item.variant_id
-    const product = props.item.product
-    let selectedOptions = {}
-    if (
-      variantId &&
-      product &&
-      product.variants &&
-      product.variants.length > 0
-    ) {
-      const variant = product.variants.find(v => v.id === variantId)
-      if (variant) {
-        for (const option of variant.options) {
-          selectedOptions[option.option_id] = option.value_id
-        }
-      }
-    }
-
-    return selectedOptions
   }
 
   const { item, settings, allowEdit } = props
