@@ -1,6 +1,5 @@
-import React from "react"
 import { connect } from "react-redux"
-import { withRouter } from "react-router"
+import { withRouter } from "react-router-dom"
 import { deleteCurrentProduct } from "../actions"
 import Buttons from "./components/buttons"
 

@@ -1,10 +1,9 @@
 import { connect } from "react-redux"
-import { withRouter } from "react-router"
+import { withRouter } from "react-router-dom"
 import {
   deleteImage,
-  updateImages,
   updateImage,
-  fetchImages,
+  updateImages,
   uploadImages,
 } from "../../actions"
 import ProductImages from "./components/images"

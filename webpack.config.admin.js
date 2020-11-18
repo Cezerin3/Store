@@ -1,11 +1,9 @@
-// @ts-nocheck
 const path = require("path")
 const webpack = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
-const Dotenv = require("dotenv-webpack")
 
 module.exports = {
   devtool: "source-map",
@@ -52,9 +50,6 @@ module.exports = {
 
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      lib: path.resolve(__dirname, "src/admin/client/lib"),
-    },
   },
 
   module: {
@@ -67,19 +62,7 @@ module.exports = {
               loader: "ts-loader",
               options: {
                 transpileOnly: true,
-                ignoreDiagnostics: [
-                  2339,
-                  2322,
-                  2769,
-                  2345,
-                  2554,
-                  2304,
-                  2552,
-                  2305,
-                  2739,
-                  2559,
-                  2741,
-                ],
+                ignoreDiagnostics: [2339, 2551, 2769, 2554],
               },
             },
             exclude: /node_modules/,
@@ -177,7 +160,6 @@ module.exports = {
         path.resolve("public/admin-assets/css/bundle-*.css"),
       ],
     }),
-    new Dotenv(),
     // new ForkTsCheckerWebpackPlugin({
     //   async: true,
     //   typescript: {
@@ -196,7 +178,6 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "src/admin/client/index.html",
-      language: process.env.CONFIG_ADMIN_LANGUAGE,
       inject: "body",
       filename: "admin/index.html",
     }),

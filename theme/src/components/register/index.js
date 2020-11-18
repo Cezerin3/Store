@@ -1,7 +1,6 @@
 import React from "react"
 import { themeSettings, text } from "../../lib/settings"
 import Register from "./register"
-import AuthHeader from "../authHeader"
 
 class RegisterForm extends React.Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class RegisterForm extends React.Component {
       first_name: values.first_name,
       last_name: values.last_name,
       email: values.email,
-      password: AuthHeader.encodeUserPassword(values.password),
+      password: values.password,
       history: this.props.history,
     })
   }

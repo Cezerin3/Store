@@ -1,4 +1,3 @@
-// @ts-nocheck
 const path = require("path")
 const webpack = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
@@ -6,7 +5,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const { GenerateSW } = require("workbox-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
-const Dotenv = require("dotenv-webpack")
 
 module.exports = {
   entry: {
@@ -118,7 +116,6 @@ module.exports = {
         path.resolve("theme/assets/workbox-*.js"),
       ],
     }),
-    new Dotenv(),
     // new ForkTsCheckerWebpackPlugin({ async: true }),
     new MiniCssExtractPlugin({
       filename: "assets/css/bundle-[contenthash].css",

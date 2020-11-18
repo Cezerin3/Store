@@ -1,13 +1,13 @@
 import { connect } from "react-redux"
-import { withRouter } from "react-router"
+import { withRouter } from "react-router-dom"
 import {
+  checkoutOrder,
+  clearOrderDetails,
+  deleteOrderItem,
   fetchOrder,
   updateOrder,
-  deleteOrderItem,
   updateOrderItem,
   updateShippingAddress,
-  clearOrderDetails,
-  checkoutOrder,
 } from "../actions"
 import OrderDetails from "./components/details"
 

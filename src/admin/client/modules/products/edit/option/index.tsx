@@ -1,12 +1,12 @@
 import { connect } from "react-redux"
-import { withRouter } from "react-router"
+import { withRouter } from "react-router-dom"
 import {
+  createOptionValue,
+  deleteOption,
+  deleteOptionValue,
   fetchOptions,
   updateOption,
-  deleteOption,
-  createOptionValue,
   updateOptionValue,
-  deleteOptionValue,
 } from "../../actions"
 import ProductOptionForm from "./components/option"
 

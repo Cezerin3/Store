@@ -1,11 +1,11 @@
 import { connect } from "react-redux"
-import { withRouter } from "react-router"
+import { withRouter } from "react-router-dom"
 import {
-  createVariant,
-  updateVariant,
-  setVariantOption,
-  deleteVariant,
   createOption,
+  createVariant,
+  deleteVariant,
+  setVariantOption,
+  updateVariant,
 } from "../../actions"
 import ProductVariantsGrid from "./components/grid"
 

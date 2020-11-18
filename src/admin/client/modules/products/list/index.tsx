@@ -1,12 +1,12 @@
 import { connect } from "react-redux"
-import { withRouter } from "react-router"
+import { withRouter } from "react-router-dom"
 import {
-  fetchProducts,
-  fetchMoreProducts,
-  selectProduct,
-  deselectProduct,
-  selectAllProduct,
   deselectAllProduct,
+  deselectProduct,
+  fetchMoreProducts,
+  fetchProducts,
+  selectAllProduct,
+  selectProduct,
 } from "../actions"
 import List from "./components/list"
 

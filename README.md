@@ -155,23 +155,23 @@ Client-side dashboard use JSON Web Token (JWT) to access REST API.
 
 ## Yarn Scripts
 
-| `yarn <script>`      | Description                                                           |
-| -------------------- | --------------------------------------------------------------------- |
-| `clean`              | Delete store and admin asset bundles.                                 | Not working!
-| `compile:watch`      | Compiles the application to disk **and watch** (`~/dist` by default). |
-| `compile`            | Compiles the application to disk (`~/dist` by default).               |
-| `webpack:admin:watch`| Assemble admin bundles **and watch**.                                 |
-| `webpack:store:watch`| Assemble store bundles **and watch**.                                 |
-| `webpack:admin`      | Assemble admin bundles.                                               |
-| `webpack:store`      | Assemble store bundles.                                               |
-| `theme:install`      | Install theme from /public/<file>.zip                                 |
-| `theme:export`       | Zip current theme to /public/<file>.zip                               |
-| `theme:copy`         | Compile theme and copy assets to /public/                             | Not working!
-| `theme:build:watch`  | Refresh theme after modification **and watch**.                       | Not working!
-| `theme:build`        | Refresh theme after modification.                                     |
-| `build:watch`        | Compile and assemble bundles **and watch**.                           |
-| `build`              | Compile and assemble bundles.                                         |
-| `start`              | Start node server.                                                    |
+| `yarn <script>`       | Description                                                           |
+| --------------------- | --------------------------------------------------------------------- |
+| `clean`               | Delete store and admin asset bundles.                                 | Not working! |
+| `compile:watch`       | Compiles the application to disk **and watch** (`~/dist` by default). |
+| `compile`             | Compiles the application to disk (`~/dist` by default).               |
+| `webpack:admin:watch` | Assemble admin bundles **and watch**.                                 |
+| `webpack:store:watch` | Assemble store bundles **and watch**.                                 |
+| `webpack:admin`       | Assemble admin bundles.                                               |
+| `webpack:store`       | Assemble store bundles.                                               |
+| `theme:install`       | Install theme from /public/<file>.zip                                 |
+| `theme:export`        | Zip current theme to /public/<file>.zip                               |
+| `theme:copy`          | Compile theme and copy assets to /public/                             | Not working! |
+| `theme:build:watch`   | Refresh theme after modification **and watch**.                       | Not working! |
+| `theme:build`         | Refresh theme after modification.                                     |
+| `build:watch`         | Compile and assemble bundles **and watch**.                           |
+| `build`               | Compile and assemble bundles.                                         |
+| `start`               | Start node server.                                                    |
 
 ## Financial contributions
 

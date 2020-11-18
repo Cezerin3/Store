@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { withRouter } from "react-router"
+import { withRouter } from "react-router-dom"
 import { webstoreAuth } from "../../../lib"
 import { fetchServices } from "../actions"
 import List from "./components/list"

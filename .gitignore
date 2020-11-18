@@ -39,3 +39,4 @@ dist/*
 logs/*
 *.zip
 debug.log
+*.map

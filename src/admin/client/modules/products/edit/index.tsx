@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { withRouter } from "react-router"
+import { withRouter } from "react-router-dom"
 import { messages } from "../../../lib"
 import { fetchCategoriesIfNeeded } from "../../productCategories/actions"
 import { cancelProductEdit, fetchProduct } from "../actions"
