@@ -339,7 +339,7 @@ export function updateCheckoutField(checkoutField) {
   }
 }
 
-export function fetchCommerceSettings() {
+export function fetchCommerceSettings(value) {
   return (dispatch, getState) => {
     return api.settings
       .retrieveCommerceSettings()

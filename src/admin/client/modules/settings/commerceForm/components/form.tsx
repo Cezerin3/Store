@@ -123,6 +123,7 @@ const CommerceForm: FC<props & InjectedFormProps<{}, props>> = (
           <>
             <Field
               name="status"
+              //@ts-ignore
               component={RadioButtonGroup}
               onChange={event => setSelectField(event)}
             >
@@ -147,6 +148,7 @@ const CommerceForm: FC<props & InjectedFormProps<{}, props>> = (
             {(isSelectField || isServiceOptions) && (
               <Field
                 name="serviceOptions"
+                //@ts-ignore
                 component={SelectField}
                 fullWidth
                 label={messages.service_options}

@@ -62,7 +62,6 @@ module.exports = {
               loader: "ts-loader",
               options: {
                 transpileOnly: true,
-                ignoreDiagnostics: [2339, 2551, 2769, 2554],
               },
             },
             exclude: /node_modules/,
@@ -160,18 +159,7 @@ module.exports = {
         path.resolve("public/admin-assets/css/bundle-*.css"),
       ],
     }),
-    // new ForkTsCheckerWebpackPlugin({
-    //   async: true,
-    //   typescript: {
-    //     enabled: false,
-    //     diagnosticOptions: {
-    //       declaration: false,
-    //       global: true,
-    //       semantic: true,
-    //       syntactic: true,
-    //     },
-    //   },
-    // }),
+    new ForkTsCheckerWebpackPlugin({}),
     new MiniCssExtractPlugin({
       filename: "admin-assets/css/bundle-[contenthash].css",
       chunkFilename: "admin-assets/css/bundle-[contenthash].css",

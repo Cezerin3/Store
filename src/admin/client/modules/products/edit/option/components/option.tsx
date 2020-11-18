@@ -9,15 +9,14 @@ import style from "./style.module.sass"
 import OptionValues from "./values"
 
 interface props {
-  handleSubmit
-  pristine
-  reset
-  submitting
-  deleteOption
-  optionValues
-  createOptionValue
-  updateOptionValue
-  deleteOptionValue
+  pristine: boolean
+  reset: Function
+  submitting: boolean
+  deleteOption: Function
+  optionValues: []
+  createOptionValue: Function
+  updateOptionValue: Function
+  deleteOptionValue: Function
   fetchData: Function
 }
 
@@ -34,8 +33,10 @@ const validate = (values: props) => {
   return errors
 }
 
-const ProductOptionForm: FC<props & InjectedFormProps<{}, props>> = (
-  props: props & InjectedFormProps<{}, props>
+const ProductOptionForm: FC<
+  props & InjectedFormProps<props, { handleSubmit: Function }, string>
+> = (
+  props: props & InjectedFormProps<props, { handleSubmit: Function }, string>
 ) => {
   const {
     handleSubmit,
@@ -102,7 +103,7 @@ const ProductOptionForm: FC<props & InjectedFormProps<{}, props>> = (
             <Button
               variant="contained"
               color="secondary"
-              onClick={deleteOption}
+              onClick={() => deleteOption}
             >
               {messages.actions_delete}
             </Button>

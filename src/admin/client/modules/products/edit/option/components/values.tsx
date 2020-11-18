@@ -5,15 +5,19 @@ import React, { useState } from "react"
 import { messages } from "../../../../../lib"
 import style from "./style.module.sass"
 
-const OptionValueEdit = props => {
+interface OptionValueEditProps {
+  value: { id: string; name: string }
+  onChange: Function
+  onDelete: Function
+}
+
+const OptionValueEdit = (props: OptionValueEditProps) => {
   const [value, setValue] = useState(props.value.name)
 
-  const onBlur = e => {
-    props.onChange(props.value.id, value)
-  }
+  const { onChange, onDelete } = props
 
-  const onDelete = () => {
-    props.onDelete(props.value.id)
+  const onBlur = () => {
+    onChange(props.value.id, value)
   }
 
   return (
@@ -30,7 +34,7 @@ const OptionValueEdit = props => {
       <div className={style.gridColButton}>
         <IconButton
           title={messages.actions_delete}
-          onClick={onDelete}
+          onClick={() => onDelete(props.value.id)}
           tabIndex={-1}
         >
           <Delete htmlColor="#a1a1a1" />
@@ -40,7 +44,11 @@ const OptionValueEdit = props => {
   )
 }
 
-const OptionValueAdd = props => {
+interface OptionValueAddProps {
+  onCreate: Function
+}
+
+const OptionValueAdd = (props: OptionValueAddProps) => {
   const [value, setValue] = useState("")
 
   const onCreate = () => {
@@ -77,12 +85,20 @@ const OptionValueAdd = props => {
   )
 }
 
-const OptionValues = ({
-  optionValues,
-  createOptionValue,
-  updateOptionValue,
-  deleteOptionValue,
-}) => {
+interface props {
+  optionValues: []
+  createOptionValue: Function
+  updateOptionValue: Function
+  deleteOptionValue: Function
+}
+
+const OptionValues = (props: props) => {
+  const {
+    optionValues,
+    createOptionValue,
+    updateOptionValue,
+    deleteOptionValue,
+  } = props
   const valueRows = optionValues.map((value, index) => (
     <OptionValueEdit
       key={index}
