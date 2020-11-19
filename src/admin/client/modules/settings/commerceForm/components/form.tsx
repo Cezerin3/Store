@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, Paper } from "@material-ui/core"
 import MenuItem from "material-ui/MenuItem"
 import { RadioButton } from "material-ui/RadioButton"
@@ -150,9 +151,9 @@ const CommerceForm: FC<props & InjectedFormProps<{}, props>> = (
                 component={SelectField}
                 title={messages.service_options}
                 onChange={(event, index, next) => setTextField(index)}
-                // fullWidth
-                // hintText={messages.service_options_initial_value}
-                // floatingLabelText={messages.service_options_initial_value}
+                fullWidth
+                hintText={messages.service_options_initial_value}
+                floatingLabelText={messages.service_options_initial_value}
               >
                 <MenuItem
                   value={selectFieldValuesFirst[1]}
