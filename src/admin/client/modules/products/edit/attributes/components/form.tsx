@@ -76,16 +76,16 @@ const AttributesGrid = ({ fields }) => (
 )
 
 interface props {
-  handleSubmit
-  pristine
-  reset
-  submitting
+  handleSubmit: Function
+  pristine: boolean
+  reset: Function
+  submitting: boolean
 }
 
 const ProductAttributesForm = (props: props) => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={() => handleSubmit}>
       <Paper className="paper-box" elevation={4}>
         <FieldArray name="attributes" component={AttributesGrid} />
         <div
@@ -98,7 +98,7 @@ const ProductAttributesForm = (props: props) => {
             variant="contained"
             color="primary"
             className={style.button}
-            onClick={reset}
+            onClick={() => reset}
             disabled={pristine || submitting}
           >
             {messages.cancel}

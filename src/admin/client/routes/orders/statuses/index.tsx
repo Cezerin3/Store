@@ -2,7 +2,7 @@ import React from "react"
 import Edit from "../../../modules/orderStatuses/edit"
 import List from "../../../modules/orderStatuses/list"
 
-export default () => (
+const OrdersStatusesRouter = () => (
   <div className="row row--no-gutter col-full-height">
     <div className="col-xs-12 col-sm-4 col-md-3 col--no-gutter scroll col-full-height">
       <List showAll={false} showAdd />
@@ -12,3 +12,5 @@ export default () => (
     </div>
   </div>
 )
+
+export default OrdersStatusesRouter

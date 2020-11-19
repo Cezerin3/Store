@@ -65,13 +65,12 @@ const EditPaymentMethodForm = props => {
             </div>
             <div className="col-xs-12 col-sm-8">
               <Field
-                //@ts-ignore
                 component={SelectField}
-                autoWidth
-                fullWidth
+                // autoWidth
+                // fullWidth
                 name="gateway"
-                floatingLabelFixed
-                floatingLabelText={messages.paymentGateway}
+                // floatingLabelFixed
+                title={messages.paymentGateway}
                 onChange={(event, currentValue, prevValue) => {
                   setGateway(currentValue)
                 }}

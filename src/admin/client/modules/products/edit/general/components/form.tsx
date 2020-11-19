@@ -46,18 +46,18 @@ const asyncValidate = values => {
 }
 
 interface props {
-  handleSubmit
-  pristine
-  reset
-  submitting
-  initialValues
+  handleSubmit: Function
+  pristine: boolean
+  reset: Function
+  submitting: boolean
+  initialValues: Partial<any>
 }
 
 const ProductGeneralForm = (props: props) => {
   const { handleSubmit, pristine, reset, submitting, initialValues } = props
   if (initialValues) {
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={() => handleSubmit}>
         <Paper className="paper-box" elevation={4}>
           <div className={style.innerBox}>
             <Field
@@ -100,7 +100,7 @@ const ProductGeneralForm = (props: props) => {
               variant="contained"
               color="primary"
               className={style.button}
-              onClick={reset}
+              onClick={() => reset}
               disabled={pristine || submitting}
             >
               {messages.cancel}

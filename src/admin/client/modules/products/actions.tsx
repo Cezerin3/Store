@@ -272,21 +272,19 @@ export function deleteCurrentProduct() {
 }
 
 export function deleteProducts() {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const state = getState()
-    let promises = state.products.selected.map(productId =>
-      api.products.delete(productId)
-    )
+    try {
+      await state.products.selected.map(productId =>
+        api.products.delete(productId)
+      )
 
-    return Promise.all(promises)
-      .then(values => {
-        dispatch(deleteProductsSuccess())
-        dispatch(deselectAllProduct())
-        dispatch(fetchProducts())
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      dispatch(deleteProductsSuccess())
+      dispatch(deselectAllProduct())
+      dispatch(fetchProducts())
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 
@@ -326,7 +324,7 @@ export function updateProduct(data) {
 }
 
 export function createProduct(history) {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const state = getState()
 
     const productDraft = {
@@ -334,15 +332,13 @@ export function createProduct(history) {
       category_id: state.productCategories.selectedId,
     }
 
-    console.log(state.productCategories.selectedId)
-
-    return api.products
-      .create(productDraft)
-      .then(({ status, json }) => {
-        dispatch(successCreateProduct(json.id))
-        history.push("/admin/product/" + json.id)
-      })
-      .catch(error => {})
+    try {
+      const { json } = await api.products.create(productDraft)
+      dispatch(successCreateProduct(json.id))
+      history.push("/admin/product/" + json.id)
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 

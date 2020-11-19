@@ -114,7 +114,7 @@ const Buttons: FC<props> = (props: props) => {
         touch
         tooltipPosition="bottom-left"
         tooltip={messages.addProduct}
-        onClick={() => onCreate}
+        onClick={() => onCreate()}
       >
         <Add htmlColor="#fff" />
       </IconButton>

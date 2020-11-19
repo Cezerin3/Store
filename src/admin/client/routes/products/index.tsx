@@ -3,7 +3,7 @@ import Categories from "../../modules/productCategories/list"
 import ProductsList from "../../modules/products/list"
 import ProductsFilter from "../../modules/products/listFilter"
 
-export default () => (
+const ProductsRouter = () => (
   <div className="row row--no-gutter col-full-height">
     <div className="col-xs-12 col-sm-4 col-md-3 col--no-gutter scroll col-full-height">
       <Categories showAll showManage />
@@ -14,3 +14,5 @@ export default () => (
     </div>
   </div>
 )
+
+export default ProductsRouter

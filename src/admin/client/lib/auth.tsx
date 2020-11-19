@@ -15,15 +15,15 @@ const getParameterByName = (name: string, url: string) => {
 }
 
 export const validateCurrentToken = () => {
-  if (location.pathname !== loginPath) {
+  if (window.location.pathname !== loginPath) {
     if (!isCurrentTokenValid()) {
-      location.replace(loginPath)
+      window.location.replace(loginPath)
     }
   }
 }
 
 export const checkTokenFromUrl = () => {
-  if (location.pathname === loginPath) {
+  if (window.location.pathname === loginPath) {
     const token = getParameterByName("token", null)
     if (token && token !== "") {
       const tokenData = parseJWT(token)
@@ -36,7 +36,7 @@ export const checkTokenFromUrl = () => {
             email: tokenData.email,
             expirationDate: expirationDate.toString(),
           })
-          location.replace(homePath)
+          window.location.replace(homePath)
         } else {
           alert(messages.tokenExpired)
         }
@@ -45,7 +45,7 @@ export const checkTokenFromUrl = () => {
       }
     } else {
       if (isCurrentTokenValid()) {
-        location.replace(homePath)
+        window.location.replace(homePath)
       }
     }
   }
@@ -87,5 +87,5 @@ export const removeToken = () => {
   localStorage.removeItem("webstore_token")
   localStorage.removeItem("webstore_email")
   localStorage.removeItem("webstore_exp")
-  location.replace(loginPath)
+  window.location.replace(loginPath)
 }

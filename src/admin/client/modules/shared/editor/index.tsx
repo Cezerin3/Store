@@ -1,29 +1,20 @@
+import Editor from "@draft-js-plugins/editor"
+import createHashtagPlugin from "@draft-js-plugins/hashtag"
+import createLinkifyPlugin from "@draft-js-plugins/linkify"
 import { ContentState, convertToRaw, EditorState } from "draft-js"
-import createAlignmentPlugin from "draft-js-alignment-plugin"
-import createFocusPlugin from "draft-js-focus-plugin"
-import createHashtagPlugin from "draft-js-hashtag-plugin"
-import "draft-js-hashtag-plugin/lib/plugin.css"
-import "draft-js-image-plugin/lib/plugin.css"
-import createLinkifyPlugin from "draft-js-linkify-plugin"
-import "draft-js-linkify-plugin/lib/plugin.css"
-import Editor from "draft-js-plugins-editor"
-import "draft-js/dist/Draft.css"
 import draftToHtml from "draftjs-to-html"
 import htmlToDraft from "html-to-draftjs"
-import React, { useEffect, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 
-const focusPlugin = createFocusPlugin()
-const alignmentPlugin = createAlignmentPlugin()
 const hashtagPlugin = createHashtagPlugin()
 const linkifyPlugin = createLinkifyPlugin()
 
-const plugins = [focusPlugin, alignmentPlugin, linkifyPlugin, hashtagPlugin]
-
+const plugins = [linkifyPlugin, hashtagPlugin]
 interface props {
   input: { value: string; onChange: Function }
 }
 
-const Draft = (props: props) => {
+const Draft: FC<props> = (props: props) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   )

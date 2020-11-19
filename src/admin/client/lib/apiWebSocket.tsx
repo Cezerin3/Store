@@ -72,7 +72,7 @@ const showNotification = (
   })
 
   msg.addEventListener("click", event => {
-    parent.focus()
+    window.parent.focus()
     // event.target.close()
   })
 }
